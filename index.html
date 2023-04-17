@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" type="text/css" href="main.css">
         <!--Import bootstrap for form elements -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <title>
@@ -11,8 +15,93 @@
 
     
     <body>
-        <div>
-
+        <h1>Quality Control Form - Desktop</h1>
+        <b>
+            <p>This form is to be completed prior to equipment delivery</p>
+            <p>1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.</p><br>
+        </b>
+        <div class="form-group row">
+            <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputQC1Name" placeholder="Assembly Tech">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; JR/SR Technician or Supervisior</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputQC2Name" placeholder="SR Tech/Supervisor">
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="inputAssemblyDate" class="col-sm-2 col-form-label">Date: DD/MM/YYYY</label>
+            <div class="col-sm-4">
+                <input type="date" class="form-control" id="inputAssemblyDate">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputSalesOrder" class="col-sm-2 col-form-label">Sales Order No.</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputSalesOrder">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">RCT Package Serial No.</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputRCTPackageSerial">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">RCT Item Serial No.</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputRCTItemSerial">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputMakeModel" class="col-sm-2 col-form-label">Make/Model:</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputMakeModel">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="inputProcessorType" placeholder="Intel Core iX">
+            </div>
+            <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="inputProcessorSpeed">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputMSCOA" class="col-sm-2 col-form-label">MS OS COA Serial No. (Note if Chrome/Linux)</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputMSCOA">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputOfficeCOA" class="col-sm-2 col-form-label">Microsoft Office COA Serial No.</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputOfficeCOA">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputRAM1" class="col-sm-2 col-form-label">Ram Serial No.</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputRAM1">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputRAM2" class="col-sm-2 col-form-label">Ram Serial No.</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputRAM2">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputDrive" class="col-sm-2 col-form-label">Drive Serial No.</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputDrive">
+            </div>
         </div>
 
         <!--Import Javascript components needed for bootstrap-->
