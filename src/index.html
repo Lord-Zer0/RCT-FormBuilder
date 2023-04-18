@@ -114,34 +114,26 @@
         </div>
         <div class="form-group row">
             <label for="inputCaseStatus" class="col-sm-2 col-form-label">Case - Scratches/Dents/Cracks</label>
+            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
             <div class="col-sm-10">
-                <label class="col-form-label">QC1</label>
-                <div class="custom control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioPass" name="customRadioPass" class="custom-control-input">
-                    <label class="custom-control-label" for="customradioPass">PASS</label>
-                </div>
-                <div class="custom control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioFail" name="customRadioFail" class="custom-control-input">
-                    <label class="custom-control-label" for="customradioFail">Fail</label>
-                </div>
-                <div class="custom control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioNA" name="customRadioNA" class="custom-control-input">
-                    <label class="custom-control-label" for="customradioPNA">N/A</label>
-                </div>
-                <label class="col-form-label">QC2</label>
-                <div class="custom control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioPass" name="customRadioPass" class="custom-control-input">
-                    <label class="custom-control-label" for="customradioPass">PASS</label>
-                </div>
-                <div class="custom control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioFail" name="customRadioFail" class="custom-control-input">
-                    <label class="custom-control-label" for="customradioFail">Fail</label>
-                </div>
-                <div class="custom control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioNA" name="customRadioNA" class="custom-control-input">
-                    <label class="custom-control-label" for="customradioPNA">N/A</label>
+                <!--TODO: Make only one button toggle at a time-->     
+                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                    <label class="col-sm-1 col-form-label">QC1</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">QC2</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
                 </div>
             </div>
+            <!--Closing comment for repeatable data block-->
         </div>
 
 
