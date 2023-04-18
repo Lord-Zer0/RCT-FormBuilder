@@ -1,0 +1,21 @@
+<!-- repeatable template for QC Button rows -->
+<template id="qc-template">
+    <div class="col-sm-8">
+        <!--TODO: Make only one button toggle at a time-->     
+        <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+            <label class="col-sm-1 col-form-label">QC1</label>
+            <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+            </div>
+
+            <label class="col-sm-1 col-form-label">QC2</label>
+            <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+            <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+            <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+            <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+            </div>
+        </div>
+    </div>
+</template>
