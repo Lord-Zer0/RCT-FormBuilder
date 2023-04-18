@@ -51,6 +51,18 @@
         </b>
 
         <div class="form-group row">
+            <label for="inputLocation" class="col-sm-2 col-form-label">Build Location</label>
+            <div class="col-sm-4">
+                <select class="custom-select" id="inputLocation">
+                    <option selected>Choose...</option>
+                    <option value="1">Niagara</option>
+                    <option value="2">Mississauga</option>
+                    <option value="3">Toronto</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
             <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="inputQC1Name" placeholder="Assembly Tech">
@@ -96,26 +108,85 @@
         <div class="form-group row">
             <label for="inputOS" class="col-sm-2 col-form-label">Operating System</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputOS">
+                <select class="custom-select" id="inputOSSelect" autocomplete="false">
+                    <option selected>Choose...</option> 
+                    <option value="1">Windows</option>
+                    <option value="2">Linux</option>
+                    <option value="3">Chrome OS</option>
+                </select>
             </div>
-            <button type="button" class="btn btn-secondary dropdown-toggle col-sm-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item">Windows</a>
-                    <a class="dropdown-item">Linux</a>
-                    <a class="dropdown-item">Chrome OS</a>
-                </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputMSO" class="col-sm-2 col-form-label">Microsoft Office Installed</label>
+            <div class="col-sm-4">
+                <select class="custom-select" id="inputMSOSelect">
+                    <option selected>Choose...</option>
+                    <option value="1">YES</option>
+                    <option value="2">NO</option>
+                </select>
+            </div>
         </div>
         <div class="form-group row">
             <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputProcessorType" placeholder="Intel Core iX">
+                <select class="custom-select" id="inputProcessorType">
+                    <option selected>Choose...</option>
+                    <option value="1">intel Core i3</option>
+                    <option value="2">intel Core i5</option>
+                    <option value="3">intel Core i7</option>
+                    <option value="4">intel Core i9</option>
+                </select>
             </div>
             <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputProcessorSpeed">
+                <select class="custom-select" id="inputProcessorType">
+                    <option selected>Choose...</option>
+                    <option value="1">1st Gen</option>
+                    <option value="2">2nd Gen</option>
+                    <option value="3">3rd Gen</option>
+                    <option value="4">4th Gen</option>
+                    <option value="5">5th Gen</option>
+                    <option value="6">6th Gen</option>
+                    <option value="7">7th Gen</option>
+                    <option value="8">8th Gen</option>
+                    <option value="9">9th Gen</option>
+                    <option value="10">10th Gen</option>
+                    <option value="11">11th Gen</option>
+                    <option value="12">12th Gen</option>
+                    <option value="13">13th Gen</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputDriveType" class="col-sm-2 col-form-label">HDD/SSD Type</label>
+            <div class="col-sm-2">
+                <select class="custom-select" id="inputDriveType">
+                    <option selected>Choose...</option>
+                    <option value="1">Hard Drive</option>
+                    <option value="2">Solid State (2.5")</option>
+                    <option value="3">M.2 Drive</option>
+                    <option value="4">NVMe</option>
+                </select>
+            </div>
+            <label for="inputRAMType" class="col-sm-0 col-form-label">RAM</label>
+            <div class="col-sm-1">
+                <select class="custom-select" id="inputRAMType">
+                    <option selected>Choose...</option>
+                    <option value="1">DDR3</option>
+                    <option value="2">DDR4</option>
+                    <option value="3">DDR5</option>
+                </select>
+            </div>
+            <div class="col-sm-1">
+                <select class="custom-select" id="inputRAMSize">
+                    <option selected>Choose...</option>
+                    <option value="1">8 GB</option>
+                    <option value="2">16 GB</option>
+                </select>
             </div>
         </div>
         
+
         
 
         <!--Rows for QC information is imported here-->
