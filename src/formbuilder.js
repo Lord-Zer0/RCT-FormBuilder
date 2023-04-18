@@ -2,6 +2,7 @@
 const qcblock = document.querySelector('#qc-template');
 const headerblock = document.querySelector('#heading-template')
 const qcchecks = [
+    // Desktop Version 1.0
     { isHeader: true, heading: 'Visual Inspection'},
     { question: 'Case - Scratches/Dents/Cracks' },
     { question: 'Cleanliness - Inside/Outside, Stickers Removed'},
