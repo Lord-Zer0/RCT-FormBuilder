@@ -2,3 +2,15 @@ body {
     padding: 0;
     margin: 0;
 }
+
+.btn.btn-pass.active {
+    background-color: green !important;
+}
+
+.btn.btn-fail.active {
+    background-color: red !important;
+}
+
+.btn.btn-na.active {
+    background-color: yellow !important;
+}

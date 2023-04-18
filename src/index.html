@@ -15,29 +15,37 @@
 
     
     <body>
-        <!-- repeatable template for QC Button rows -->
-        
-        <template id="qc-template">
-            <div class="col-sm-8">
-                <label for="inputTemplate" class="col-sm-4 col-form-label"><span class="question"></span></label>
-                <!--TODO: Make only one button toggle at a time-->     
-                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
-                    <label class="col-sm-1 col-form-label">QC1</label>
-                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
-                    </div>
+        <template id="heading-template">
+            <div class="form-text" id="groupHeadingTemplate">
+                <h3 id="infoHeadingTemplate"><span class="heading"></span> &mdash; Mark "X" or "N/A" for each criteria.</h3>
+            </div>
+        </template>
 
-                    <label class="col-sm-1 col-form-label">QC2</label>
-                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+        <!-- repeatable template for QC Button rows -->
+        <template id="qc-template">
+            <div class="form-group row">
+                <label for="inputTemplate" class="col-sm-4 col-form-label"><span class="question"></span></label>
+                <div class="col-sm-8">
+                    <!--TODO: Make only one button toggle at a time-->     
+                    <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                        <label class="col-sm-1 col-form-label">QC1</label>
+                        <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                            <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                            <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                        </div>
+
+                        <label class="col-sm-1 col-form-label">QC2</label>
+                        <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                            <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                            <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </template>
+
         
         <h1>Quality Control Form - Desktop</h1>
         <b>
@@ -132,23 +140,6 @@
                     Note: The type and GB size of the RAM and Drive is listed on the Serial No.
                 </small>
             </div>
-        </div>
-
-        <div class="form-text" id="groupVisualInspection">
-            <h3 id="infoVisualInspection">Visual Inspection &#8212; Mark "X" or "N/A" for each criteria.</h3>
-        </div>
-        
-        
-        <div class="form-text" id="groupPOSTBIOSHW">
-            <h3 id="infoPOSTBIOSHW">POST/BIOS/Hardware Verification &#8212; Mark "X" or "N/A" for each criteria.</h3>
-        </div>
-
-        <div class="form-text" id="groupDeviceOperation">
-            <h3 id="infoDeviceOperation">Device Operation Verification &#8212; Mark "X" or "N/A" for each criteria.</h3>
-        </div>
-
-        <div class="form-text" id="groupFinalInspection">
-            <h3 id="infoFinalInspection">Final Inspection (to be performed just before package or skid is sealed) &#8212; Mark "X" or "N/A" for each criteria.</h3>
         </div>
 
         <div id="qcchecks"></div>
