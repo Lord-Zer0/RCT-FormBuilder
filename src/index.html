@@ -17,9 +17,12 @@
     <body>
         <h1>Quality Control Form - Desktop</h1>
         <b>
-            <p>This form is to be completed prior to equipment delivery</p>
-            <p>1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.</p><br>
+            <p>
+                This form is to be completed prior to equipment delivery <br>
+                1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.
+            </p><br>
         </b>
+
         <div class="form-group row">
             <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician</label>
             <div class="col-sm-4">
@@ -100,9 +103,48 @@
         <div class="form-group row">
             <label for="inputDrive" class="col-sm-2 col-form-label">Drive Serial No.</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputDrive">
+                <input type="text" class="form-control" id="inputDrive" aria-describedby="hardwareHelpBlock">
+                <small id="hardwareHelpBlock" class="form-text text-muted">
+                    Note: The type and GB size of the RAM and Drive is listed on the Serial No.
+                </small>
             </div>
         </div>
+        <div class="form-text" id="groupVisualInspection">
+            <h3 id="infoVisualInspection">Visual Inspection &#8212; Mark "X" or "N/A" for each criteria.</h3>
+        </div>
+        <div class="form-group row">
+            <label for="inputCaseStatus" class="col-sm-2 col-form-label">Case - Scratches/Dents/Cracks</label>
+            <div class="col-sm-10">
+                <label class="col-form-label">QC1</label>
+                <div class="custom control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioPass" name="customRadioPass" class="custom-control-input">
+                    <label class="custom-control-label" for="customradioPass">PASS</label>
+                </div>
+                <div class="custom control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioFail" name="customRadioFail" class="custom-control-input">
+                    <label class="custom-control-label" for="customradioFail">Fail</label>
+                </div>
+                <div class="custom control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioNA" name="customRadioNA" class="custom-control-input">
+                    <label class="custom-control-label" for="customradioPNA">N/A</label>
+                </div>
+                <label class="col-form-label">QC2</label>
+                <div class="custom control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioPass" name="customRadioPass" class="custom-control-input">
+                    <label class="custom-control-label" for="customradioPass">PASS</label>
+                </div>
+                <div class="custom control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioFail" name="customRadioFail" class="custom-control-input">
+                    <label class="custom-control-label" for="customradioFail">Fail</label>
+                </div>
+                <div class="custom control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioNA" name="customRadioNA" class="custom-control-input">
+                    <label class="custom-control-label" for="customradioPNA">N/A</label>
+                </div>
+            </div>
+        </div>
+
+
 
         <!--Import Javascript components needed for bootstrap-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
