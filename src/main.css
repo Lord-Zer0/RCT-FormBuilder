@@ -11,6 +11,6 @@ body {
     background-color: red !important;
 }
 
-.btn.btn-na.active {
-    background-color: yellow !important;
+.center {
+    text-align: center;
 }

@@ -17,7 +17,7 @@
     <body>
         <template id="heading-template">
             <div class="form-text" id="groupHeadingTemplate">
-                <h3 id="infoHeadingTemplate"><span class="heading"></span> &mdash; Mark "X" or "N/A" for each criteria.</h3>
+                <h3 id="infoHeadingTemplate"><span class="heading"></span></h3>
             </div>
         </template>
 
@@ -27,19 +27,14 @@
                 <label for="inputTemplate" class="col-sm-4 col-form-label"><span class="question"></span></label>
                 <div class="col-sm-8">
                     <!--TODO: Make only one button toggle at a time-->     
-                    <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
-                        <label class="col-sm-1 col-form-label">QC1</label>
                         <div class="btn-group mr-2" role="group" aria-label="QC1 group">
                             <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
                             <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
                         </div>
-
-                        <label class="col-sm-1 col-form-label">QC2</label>
+                        <span class="col-sm-1"></span>
                         <div class="btn-group mr-2" role="group" aria-label="QC2 group">
                             <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
                             <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
                         </div>
                     </div>
                 </div>
@@ -56,13 +51,13 @@
         </b>
 
         <div class="form-group row">
-            <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician</label>
+            <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="inputQC1Name" placeholder="Assembly Tech">
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; JR/SR Technician or Supervisior</label>
+            <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
             <div class="col-sm-4">
                 <input type="text" class="form-control" id="inputQC2Name" placeholder="SR Tech/Supervisor">
             </div>
@@ -99,6 +94,18 @@
             </div>
         </div>
         <div class="form-group row">
+            <label for="inputOS" class="col-sm-2 col-form-label">Operating System</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputOS">
+            </div>
+            <button type="button" class="btn btn-secondary dropdown-toggle col-sm-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item">Windows</a>
+                    <a class="dropdown-item">Linux</a>
+                    <a class="dropdown-item">Chrome OS</a>
+                </div>
+        </div>
+        <div class="form-group row">
             <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
             <div class="col-sm-2">
                 <input type="text" class="form-control" id="inputProcessorType" placeholder="Intel Core iX">
@@ -108,41 +115,17 @@
                 <input type="text" class="form-control" id="inputProcessorSpeed">
             </div>
         </div>
-        <div class="form-group row">
-            <label for="inputMSCOA" class="col-sm-2 col-form-label">MS OS COA Serial No. (Note if Chrome/Linux)</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputMSCOA">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputOfficeCOA" class="col-sm-2 col-form-label">Microsoft Office COA Serial No.</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputOfficeCOA">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputRAM1" class="col-sm-2 col-form-label">Ram Serial No.</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputRAM1">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputRAM2" class="col-sm-2 col-form-label">Ram Serial No.</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputRAM2">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputDrive" class="col-sm-2 col-form-label">Drive Serial No.</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputDrive" aria-describedby="hardwareHelpBlock">
-                <small id="hardwareHelpBlock" class="form-text text-muted">
-                    Note: The type and GB size of the RAM and Drive is listed on the Serial No.
-                </small>
-            </div>
-        </div>
+        
+        
 
-        <div id="qcchecks"></div>
+        <!--Rows for QC information is imported here-->
+        <div id="qcchecks">
+            <div class="form-group row">
+                <span class="col-sm-4"></span>
+                <label class="col-sm-1 col-form-label center">QC1</label>
+                <label class="col-sm-1 col-form-label center">QC2</label>
+            </div>
+        </div>
 
         <button type="button" class="button btn-primary" id="printButton" onclick="print()">PRINT</button>
 
