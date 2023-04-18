@@ -8,10 +8,6 @@
         <link rel="stylesheet" type="text/css" href="main.css">
         <!--Import bootstrap for form elements -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
-        <!--Import JS file-->
-        <script src="formbuilder.js"></script>
-
         <title>
             Renewed Computer Technology Quality Control Form [Desktop]
         </title>
@@ -380,52 +376,6 @@
             <!--Closing comment for repeatable data block-->
         </div>
         <div class="form-group row">
-            <label for="inputImage" class="col-sm-4 col-form-label">Correct image loaded onto system</label>
-            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
-            <div class="col-sm-8">
-                <!--TODO: Make only one button toggle at a time-->     
-                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
-                    <label class="col-sm-1 col-form-label">QC1</label>
-                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
-                    </div>
-
-                    <label class="col-sm-1 col-form-label">QC2</label>
-                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
-                    </div>
-                </div>
-            </div>
-            <!--Closing comment for repeatable data block-->
-        </div>
-        <div class="form-group row">
-            <label for="inputImage" class="col-sm-4 col-form-label">Correct image loaded onto system</label>
-            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
-            <div class="col-sm-8">
-                <!--TODO: Make only one button toggle at a time-->     
-                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
-                    <label class="col-sm-1 col-form-label">QC1</label>
-                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
-                    </div>
-
-                    <label class="col-sm-1 col-form-label">QC2</label>
-                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
-                    </div>
-                </div>
-            </div>
-            <!--Closing comment for repeatable data block-->
-        </div>
-        <div class="form-group row">
             <label for="inputUSB" class="col-sm-4 col-form-label">USB ports - Working</label>
             <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
             <div class="col-sm-8">
@@ -729,7 +679,13 @@
             <!--Closing comment for repeatable data block-->
         </div>
 
+        <div id="qcchecks"></div>
 
+        <button type="button" class="button btn-primary" id="printButton" onclick="print()">PRINT</button>
+
+
+        <!--Import JS file-->
+        <script src="formbuilder.js"></script>
         <!--Import Javascript components needed for bootstrap-->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
