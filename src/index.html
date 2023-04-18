@@ -109,6 +109,7 @@
                 </small>
             </div>
         </div>
+
         <div class="form-text" id="groupVisualInspection">
             <h3 id="infoVisualInspection">Visual Inspection &#8212; Mark "X" or "N/A" for each criteria.</h3>
         </div>
@@ -159,7 +160,149 @@
             <!--Closing comment for repeatable data block-->
         </div>
         
+        <div class="form-text" id="groupPOSTBIOSHW">
+            <h3 id="infoPOSTBIOSHW">POST/BIOS/Hardware Verification &#8212; Mark "X" or "N/A" for each criteria.</h3>
+        </div>
+        <div class="form-group row">
+            <label for="inputSpecStatus" class="col-sm-4 col-form-label">RAM/DRIVE - Correct specs/Size in OS</label>
+            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
+            <div class="col-sm-8">
+                <!--TODO: Make only one button toggle at a time-->     
+                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                    <label class="col-sm-1 col-form-label">QC1</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
 
+                    <label class="col-sm-1 col-form-label">QC2</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+                </div>
+            </div>
+            <!--Closing comment for repeatable data block-->
+        </div>
+        <div class="form-group row">
+            <label for="inputPOSTRAM" class="col-sm-4 col-form-label">POST Errors/RAM seated properly</label>
+            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
+            <div class="col-sm-8">
+                <!--TODO: Make only one button toggle at a time-->     
+                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                    <label class="col-sm-1 col-form-label">QC1</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">QC2</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+                </div>
+            </div>
+            <!--Closing comment for repeatable data block-->
+        </div>
+        <div class="form-group row">
+            <label for="inputCMOS" class="col-sm-4 col-form-label">CMOS battery and clock</label>
+            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
+            <div class="col-sm-8">
+                <!--TODO: Make only one button toggle at a time-->     
+                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                    <label class="col-sm-1 col-form-label">QC1</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">QC2</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+                </div>
+            </div>
+            <!--Closing comment for repeatable data block-->
+        </div>
+        <div class="form-group row">
+            <label for="inputBIOSRESET" class="col-sm-4 col-form-label">BIOS - Settings reset to factory defaults</label>
+            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
+            <div class="col-sm-8">
+                <!--TODO: Make only one button toggle at a time-->     
+                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                    <label class="col-sm-1 col-form-label">QC1</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">QC2</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+                </div>
+            </div>
+            <!--Closing comment for repeatable data block-->
+        </div>
+        <div class="form-group row">
+            <label for="inputBIOSID" class="col-sm-4 col-form-label">BIOS - ID tags removed</label>
+            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
+            <div class="col-sm-8">
+                <!--TODO: Make only one button toggle at a time-->     
+                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                    <label class="col-sm-1 col-form-label">QC1</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">QC2</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+                </div>
+            </div>
+            <!--Closing comment for repeatable data block-->
+        </div>
+        <div class="form-group row">
+            <label for="inputSequence" class="col-sm-4 col-form-label">Boot Sequence: HDD/CD/Network</label>
+            <!--This basic row formula can be repeated for every instance of a checkbox once finished, copy from here until closing comment.-->
+            <div class="col-sm-8">
+                <!--TODO: Make only one button toggle at a time-->     
+                <div class="btn-toolbar" role="toolbar" aria-label="Quality Check Toolbar">
+                    <label class="col-sm-1 col-form-label">QC1</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC1 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+
+                    <label class="col-sm-1 col-form-label">QC2</label>
+                    <div class="btn-group mr-2" role="group" aria-label="QC2 group">
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                        <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                    </div>
+                </div>
+            </div>
+            <!--Closing comment for repeatable data block-->
+        </div>
+
+        
 
 
         <!--Import Javascript components needed for bootstrap-->
