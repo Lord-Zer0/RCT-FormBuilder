@@ -22,3 +22,7 @@ body {
 .center {
     text-align: center;
 }
+
+.break-line {
+    page-break-after: always;
+}
