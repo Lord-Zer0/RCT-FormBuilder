@@ -43,6 +43,8 @@ qcchecks.forEach(check => {
         // Create an instance of the template content
         const instance = document.importNode(qcblock.content, true);
         instance.querySelector('.question').innerHTML = check.question;
+        // const qc1 = instance.querySelector('.qc1-toggle');
+
 
         // Append the instance at the DOM
         document.getElementById('qcchecks').appendChild(instance);

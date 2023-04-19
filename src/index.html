@@ -26,18 +26,29 @@
         <template id="qc-template">
             <div class="form-group row">
                 <label for="inputTemplate" class="col-sm-4 col-form-label"><span class="question"></span></label>
-                <div class="col-sm-8">
-                    <!--TODO: Make only one button toggle at a time-->     
-                        <div class="btn-group mr-2" role="group" aria-label="QC1 group">
-                            <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                            <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                <div class="col-sm-8">    
+                        <div class="btn-group btn-group-toggle qc1-toggle" data-toggle="buttons" aria-label="QC1 group">
+                            <label class="btn btn-pass">
+                                <input type="radio" name="qc1" id="qc1-pass" autocomplete="off">PASS
+                            </label>
+                            <label class="btn btn-fail">
+                                <input type="radio" name="qc1" id="qc1-fail" autocomplete="off">FAIL
+                            </label>
+                            <label class="btn btn-na">
+                                <input type="radio" name="qc1" id="qc1-na" autocomplete="off">N/A
+                            </label>
                         </div>
                         <span class="col-sm-1"></span>
-                        <div class="btn-group mr-2" role="group" aria-label="QC2 group">
-                            <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
-                            <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
-                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
+                        <div class="btn-group btn-group-toggle qc2-toggle" data-toggle="buttons" aria-label="QC2 group">
+                            <label class="btn btn-pass">
+                                <input type="radio" name="qc2" id="qc2-pass" autocomplete="off">PASS
+                            </label>
+                            <label class="btn btn-fail">
+                                <input type="radio" name="qc2" id="qc2-fail" autocomplete="off">FAIL
+                            </label>
+                            <label class="btn btn-na">
+                                <input type="radio" name="qc2" id="qc2-na" autocomplete="off">N/A
+                            </label>
                         </div>
                     </div>
                 </div>
