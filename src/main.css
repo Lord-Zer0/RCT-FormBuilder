@@ -4,11 +4,19 @@ body {
 }
 
 .btn.btn-pass.active {
-    background-color: lightgreen !important;
+    background-color: green !important;
 }
 
 .btn.btn-fail.active {
     background-color: red !important;
+}
+
+.btn.btn-na.active {
+    background-color: yellow !important;
+}
+
+.qc-heading {
+    width: 200px;
 }
 
 .center {

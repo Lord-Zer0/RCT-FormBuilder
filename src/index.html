@@ -15,6 +15,7 @@
 
     
     <body>
+        <!-- repeatable template for QC Button rows -->
         <template id="heading-template">
             <div class="form-text" id="groupHeadingTemplate">
                 <h3 id="infoHeadingTemplate"><span class="heading"></span></h3>
@@ -30,176 +31,181 @@
                         <div class="btn-group mr-2" role="group" aria-label="QC1 group">
                             <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
                             <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
                         </div>
                         <span class="col-sm-1"></span>
                         <div class="btn-group mr-2" role="group" aria-label="QC2 group">
                             <button type="button" class="btn btn-pass" data-toggle="button" aria-pressed="false" autocomplete="off">PASS</button>
                             <button type="button" class="btn btn-fail" data-toggle="button" aria-pressed="false" autocomplete="off">FAIL</button>
+                            <button type="button" class="btn btn-na" data-toggle="button" aria-pressed="false" autocomplete="off">N/A</button>
                         </div>
                     </div>
                 </div>
             </div>
         </template>
 
-        
-        <h1>Quality Control Form - Desktop</h1>
-        <b>
-            <p>
-                This form is to be completed prior to equipment delivery <br>
-                1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.
-            </p><br>
-        </b>
 
-        <div class="form-group row">
-            <label for="inputLocation" class="col-sm-2 col-form-label">Build Location</label>
-            <div class="col-sm-4">
-                <select class="custom-select" id="inputLocation">
-                    <option selected>Choose...</option>
-                    <option value="1">Niagara</option>
-                    <option value="2">Mississauga</option>
-                    <option value="3">Toronto</option>
-                </select>
-            </div>
-        </div>
+        <form id="desktop-qc-form" class="qc-form">
+            <h1>Quality Control Form - Desktop</h1>
+            <b>
+                <p>
+                    This form is to be completed prior to equipment delivery <br>
+                    1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.
+                </p><br>
+            </b>
 
-        <div class="form-group row">
-            <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputQC1Name" placeholder="Assembly Tech">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputQC2Name" placeholder="SR Tech/Supervisor">
-            </div>
-        </div>
-        <br>
-        <div class="form-group row">
-            <label for="inputAssemblyDate" class="col-sm-2 col-form-label">Date: DD/MM/YYYY</label>
-            <div class="col-sm-4">
-                <input type="date" class="form-control" id="inputAssemblyDate">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputSalesOrder" class="col-sm-2 col-form-label">Sales Order No.</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputSalesOrder">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">RCT Package Serial No.</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputRCTPackageSerial">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">RCT Item Serial No.</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputRCTItemSerial">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputMakeModel" class="col-sm-2 col-form-label">Make/Model:</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputMakeModel">
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputOS" class="col-sm-2 col-form-label">Operating System</label>
-            <div class="col-sm-4">
-                <select class="custom-select" id="inputOSSelect" autocomplete="false">
-                    <option selected>Choose...</option> 
-                    <option value="1">Windows</option>
-                    <option value="2">Linux</option>
-                    <option value="3">Chrome OS</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputMSO" class="col-sm-2 col-form-label">Microsoft Office Installed</label>
-            <div class="col-sm-4">
-                <select class="custom-select" id="inputMSOSelect">
-                    <option selected>Choose...</option>
-                    <option value="1">YES</option>
-                    <option value="2">NO</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
-            <div class="col-sm-2">
-                <select class="custom-select" id="inputProcessorType">
-                    <option selected>Choose...</option>
-                    <option value="1">intel Core i3</option>
-                    <option value="2">intel Core i5</option>
-                    <option value="3">intel Core i7</option>
-                    <option value="4">intel Core i9</option>
-                </select>
-            </div>
-            <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
-            <div class="col-sm-2">
-                <select class="custom-select" id="inputProcessorType">
-                    <option selected>Choose...</option>
-                    <option value="1">1st Gen</option>
-                    <option value="2">2nd Gen</option>
-                    <option value="3">3rd Gen</option>
-                    <option value="4">4th Gen</option>
-                    <option value="5">5th Gen</option>
-                    <option value="6">6th Gen</option>
-                    <option value="7">7th Gen</option>
-                    <option value="8">8th Gen</option>
-                    <option value="9">9th Gen</option>
-                    <option value="10">10th Gen</option>
-                    <option value="11">11th Gen</option>
-                    <option value="12">12th Gen</option>
-                    <option value="13">13th Gen</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputDriveType" class="col-sm-2 col-form-label">HDD/SSD Type</label>
-            <div class="col-sm-2">
-                <select class="custom-select" id="inputDriveType">
-                    <option selected>Choose...</option>
-                    <option value="1">Hard Drive</option>
-                    <option value="2">Solid State (2.5")</option>
-                    <option value="3">M.2 Drive</option>
-                    <option value="4">NVMe</option>
-                </select>
-            </div>
-            <label for="inputRAMType" class="col-sm-0 col-form-label">RAM</label>
-            <div class="col-sm-1">
-                <select class="custom-select" id="inputRAMType">
-                    <option selected>Choose...</option>
-                    <option value="1">DDR3</option>
-                    <option value="2">DDR4</option>
-                    <option value="3">DDR5</option>
-                </select>
-            </div>
-            <div class="col-sm-1">
-                <select class="custom-select" id="inputRAMSize">
-                    <option selected>Choose...</option>
-                    <option value="1">8 GB</option>
-                    <option value="2">16 GB</option>
-                </select>
-            </div>
-        </div>
-        
-
-        
-
-        <!--Rows for QC information is imported here-->
-        <div id="qcchecks">
             <div class="form-group row">
-                <span class="col-sm-4"></span>
-                <label class="col-sm-1 col-form-label center">QC1</label>
-                <label class="col-sm-1 col-form-label center">QC2</label>
+                <label for="inputLocation" class="col-sm-2 col-form-label">Build Location</label>
+                <div class="col-sm-4">
+                    <select class="custom-select" id="inputLocation">
+                        <option selected>Choose...</option>
+                        <option value="1">Niagara</option>
+                        <option value="2">Mississauga</option>
+                        <option value="3">Toronto</option>
+                    </select>
+                </div>
             </div>
-        </div>
-
-        <button type="button" class="button btn-primary" id="printButton" onclick="print()">PRINT</button>
-
+    
+            <div class="form-group row">
+                <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputQC1Name" placeholder="Assembly Tech">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputQC2Name" placeholder="SR Tech/Supervisor">
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="inputAssemblyDate" class="col-sm-2 col-form-label">Date: DD/MM/YYYY</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" id="inputAssemblyDate">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputSalesOrder" class="col-sm-2 col-form-label">Sales Order No.</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputSalesOrder">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">RCT Package Serial No.</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputRCTPackageSerial">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">RCT Item Serial No.</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputRCTItemSerial">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputMakeModel" class="col-sm-2 col-form-label">Make/Model:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="inputMakeModel">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputOS" class="col-sm-2 col-form-label">Operating System</label>
+                <div class="col-sm-4">
+                    <select class="custom-select" id="inputOSSelect" autocomplete="false">
+                        <option selected>Choose...</option> 
+                        <option value="1">Windows</option>
+                        <option value="2">Linux</option>
+                        <option value="3">Chrome OS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputMSO" class="col-sm-2 col-form-label">Microsoft Office Installed</label>
+                <div class="col-sm-4">
+                    <select class="custom-select" id="inputMSOSelect">
+                        <option selected>Choose...</option>
+                        <option value="1">YES</option>
+                        <option value="2">NO</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
+                <div class="col-sm-2">
+                    <select class="custom-select" id="inputProcessorType">
+                        <option selected>Choose...</option>
+                        <option value="1">intel Core i3</option>
+                        <option value="2">intel Core i5</option>
+                        <option value="3">intel Core i7</option>
+                        <option value="4">intel Core i9</option>
+                    </select>
+                </div>
+                <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
+                <div class="col-sm-2">
+                    <select class="custom-select" id="inputProcessorType">
+                        <option selected>Choose...</option>
+                        <option value="1">1st Gen</option>
+                        <option value="2">2nd Gen</option>
+                        <option value="3">3rd Gen</option>
+                        <option value="4">4th Gen</option>
+                        <option value="5">5th Gen</option>
+                        <option value="6">6th Gen</option>
+                        <option value="7">7th Gen</option>
+                        <option value="8">8th Gen</option>
+                        <option value="9">9th Gen</option>
+                        <option value="10">10th Gen</option>
+                        <option value="11">11th Gen</option>
+                        <option value="12">12th Gen</option>
+                        <option value="13">13th Gen</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputDriveType" class="col-sm-2 col-form-label">HDD/SSD Type</label>
+                <div class="col-sm-2">
+                    <select class="custom-select" id="inputDriveType">
+                        <option selected>Choose...</option>
+                        <option value="1">Hard Drive</option>
+                        <option value="2">Solid State (2.5")</option>
+                        <option value="3">M.2 Drive</option>
+                        <option value="4">NVMe</option>
+                    </select>
+                </div>
+                <label for="inputRAMType" class="col-sm-0 col-form-label">RAM</label>
+                <div class="col-sm-1">
+                    <select class="custom-select" id="inputRAMType">
+                        <option selected>Choose...</option>
+                        <option value="1">DDR3</option>
+                        <option value="2">DDR4</option>
+                        <option value="3">DDR5</option>
+                    </select>
+                </div>
+                <div class="col-sm-1">
+                    <select class="custom-select" id="inputRAMSize">
+                        <option selected>Choose...</option>
+                        <option value="1">8 GB</option>
+                        <option value="2">16 GB</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!--Rows for QC information is imported here-->
+            <div id="qcchecks">
+                <div class="form-group row">
+                    <span class="col-sm-4"></span>
+                    <label class="col-sm-1 col-form-label center">QC1</label>
+                    <label class="col-sm-1 col-form-label center">QC2</label>
+                </div>
+            </div>
+    
+            <div class="form-group row" id="control-panel">
+                <span class="col-sm-1"></span>
+                <button type="reset" class="button btn-primary" id="clearButton">RESET</button>
+                <button type="submit" class="button btn-primary" id="saveButton">SAVE</button>
+                <button type="button" class="button btn-primary" id="printButton" onclick="print()">PRINT</button>
+            </div>
+        </form>
 
         <!--Import JS file-->
         <script src="formbuilder.js"></script>

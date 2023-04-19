@@ -48,3 +48,4 @@ qcchecks.forEach(check => {
         document.getElementById('qcchecks').appendChild(instance);
     }
 });
+
