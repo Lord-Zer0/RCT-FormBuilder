@@ -57,3 +57,9 @@ qcchecks.forEach(check => {
     }
 });
 
+const formElement = document.querySelector("form");
+const request = new XMLHttpRequest();
+request.responseType = "JSON";
+request.open("POST", "laptop.html");
+request.send(new FormData(formElement));
+console.log(request);
