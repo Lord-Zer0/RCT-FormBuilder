@@ -38,7 +38,10 @@ const qcchecks = [
     { question: 'Items match Sales Order - Verified'}
 ];
 
+qno = 0;
+
 qcchecks.forEach(check => {
+
     if (check.isHeader == true) {
         const instance = document.importNode(headerblock.content, true);
         instance.querySelector('.heading').innerHTML = check.heading;
@@ -47,15 +50,29 @@ qcchecks.forEach(check => {
         document.getElementById('qcchecks').appendChild(instance);
     } else {
         // Create an instance of the template content
+        qno += 1;
         const instance = document.importNode(qcblock.content, true);
         instance.querySelector('.question').innerHTML = check.question;
 
-        // qname = check.question.split(/[^a-z]i/)[0];
-        // console.log(qname)
+        //qname = check.question.split(/[^a-z]i/)[0];
+        //console.log(qname)
         qname = check.question;
 
+        // Use query check names to describe each group of buttons (legacy)
         instance.querySelector('.qc1-toggle').setAttribute("name", qname + "_qc1");
         instance.querySelector('.qc2-toggle').setAttribute("name", qname + "_qc2");
+
+        // Redefine the 'name' property of each button in the instance and increment
+
+        instance.querySelector('#qc1-pass').setAttribute("name", "q" + JSON.stringify(qno) + "_qc1");
+        instance.querySelector('#qc1-fail').setAttribute("name", "q" + JSON.stringify(qno) + "_qc1");
+        instance.querySelector('#qc1-na').setAttribute("name", "q" + JSON.stringify(qno) + "_qc1");
+
+        instance.querySelector('#qc2-pass').setAttribute("name", "q" + JSON.stringify(qno) + "_qc2");
+        instance.querySelector('#qc2-fail').setAttribute("name", "q" + JSON.stringify(qno) + "_qc2");
+        instance.querySelector('#qc2-na').setAttribute("name", "q" + JSON.stringify(qno) + "_qc2");
+
+
         // const qc1 = instance.querySelector('.qc1-toggle');
 
 
@@ -73,17 +90,41 @@ function handleFormSubmit(event) {
 
     var qmap = new Map();
 
+    qcheck = 0
+
     qcchecks.forEach(check => {
         if (check.question != undefined && check.question != null){
-            //qname = check.question.split(/[^a-z]i/)[0] + "_qc1";
+            qcheck += 1
+            qname = "q" + JSON.stringify(qcheck) + "_qc1";
             // console.log(qname);
-            // qmap.append(document.querySelector(qname).entries())
-            let qname = check.question + "_qc1";
-            let elements = document.getElementsByName(qname);
-            qmap[check.question] = elements.entries();
+            // let qname = check.question + "_qc1";
+            // let elements = document.getElementsByName(qname);
+            // console.log(elements);
+            // console.log(elements[0]);
+            // let buttons = elements[0].children.getElementsByName('qc1');
+            // console.log(buttons);
+
+            let selectedv = "";
+
+            
+            let buttons = document.getElementsByName(qname);
+
+            if (buttons[0].checked) {
+                selectedv = "PASS"
+            }
+            if (buttons[1].checked) {
+                selectedv = "FAIL"
+            }
+            if (buttons[2].checked) {
+                selectedv = "N/A"
+            }
+
+
+
+            qmap[check.question] = selectedv;
             //console.log(JSON.stringify(qmap));
         }
-    })
+    });
 
     formJSON.qc1 = JSON.stringify(qmap);
 
