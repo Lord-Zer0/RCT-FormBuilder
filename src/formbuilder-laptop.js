@@ -57,38 +57,26 @@ qcchecks.forEach(check => {
     }
 });
 
-window.addEventListener("load", () => {
-    function sendData() {
-      const XHR = new XMLHttpRequest();
-  
-      // Bind the FormData object and the form element
-      const FD = new FormData(form);
-  
-      // Define what happens on successful data submission
-      XHR.addEventListener("load", (event) => {
-        alert(event.target.responseText);
-      });
-  
-      // Define what happens in case of error
-      XHR.addEventListener("error", (event) => {
-        alert("Oops! Something went wrong.");
-      });
-  
-      // Set up our request
-      XHR.open("POST",document);
-  
-      // The data sent is what the user provided in the form
-      XHR.send(FD);
-    }
-  
-    // Get the form element
-    const form = document.getElementById("laptop-qc-form");
-  
-    // Add 'submit' event handler
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-  
-      sendData();
-    });
-  });
-  
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const data = new FormData(event.target);
+
+    const formJSON = Object.fromEntries(data.entries());
+
+    formJSON.qc1 = data.getAll("qc1");
+    formJSON.qc2 = data.getAll("qc2");
+
+    console.log(JSON.stringify(formJSON, null, 2));
+
+    const formData = [...data.entries()];
+
+    const asString = formData
+        .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
+        .join('&');
+
+    console.log(asString);
+};
+
+const form = document.querySelector("#laptop-qc-form");
+form.addEventListener("submit", handleFormSubmit);
