@@ -49,6 +49,13 @@ qcchecks.forEach(check => {
         // Create an instance of the template content
         const instance = document.importNode(qcblock.content, true);
         instance.querySelector('.question').innerHTML = check.question;
+
+        // qname = check.question.split(/[^a-z]i/)[0];
+        // console.log(qname)
+        qname = check.question;
+
+        instance.querySelector('.qc1-toggle').setAttribute("name", qname + "_qc1");
+        instance.querySelector('.qc2-toggle').setAttribute("name", qname + "_qc2");
         // const qc1 = instance.querySelector('.qc1-toggle');
 
 
@@ -64,8 +71,28 @@ function handleFormSubmit(event) {
 
     const formJSON = Object.fromEntries(data.entries());
 
-    formJSON.qc1 = data.getAll("qc1");
-    formJSON.qc2 = data.getAll("qc2");
+    var qmap = new Map();
+
+    qcchecks.forEach(check => {
+        if (check.question != undefined && check.question != null){
+            //qname = check.question.split(/[^a-z]i/)[0] + "_qc1";
+            // console.log(qname);
+            // qmap.append(document.querySelector(qname).entries())
+            let qname = check.question + "_qc1";
+            let elements = document.getElementsByName(qname);
+            qmap[check.question] = elements.entries();
+            //console.log(JSON.stringify(qmap));
+        }
+    })
+
+    formJSON.qc1 = JSON.stringify(qmap);
+
+    // qcchecks.forEach(check => {
+    //     if (check.isHeader != true) {
+    //         instance.getElementById('.')
+    //         formJSON.append(check.question, )
+    //     }
+    // });
 
     console.log(JSON.stringify(formJSON, null, 2));
 

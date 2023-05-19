@@ -68,7 +68,7 @@
             <div class="form-group row">
                 <label for="inputLocation" class="col-sm-2 col-form-label">Build Location</label>
                 <div class="col-sm-4">
-                    <select class="custom-select" id="inputLocation">
+                    <select class="custom-select" id="inputLocation" name="buildlocation">
                         <option selected>Choose...</option>
                         <option value="1">Niagara</option>
                         <option value="2">Mississauga</option>
@@ -80,50 +80,50 @@
             <div class="form-group row">
                 <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputQC1Name" placeholder="Assembly Tech">
+                    <input type="text" class="form-control" id="inputQC1Name" name="qc1inital" placeholder="Assembly Tech">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputQC2Name" placeholder="SR Tech/Supervisor">
+                    <input type="text" class="form-control" id="inputQC2Name" name="qc2inital" placeholder="SR Tech/Supervisor">
                 </div>
             </div>
             <br>
             <div class="form-group row">
                 <label for="inputAssemblyDate" class="col-sm-2 col-form-label">Date: DD/MM/YYYY</label>
                 <div class="col-sm-4">
-                    <input type="date" class="form-control" id="inputAssemblyDate">
+                    <input type="date" class="form-control" id="inputAssemblyDate" name="assemblydate">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputSalesOrder" class="col-sm-2 col-form-label">Sales Order No.</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputSalesOrder">
+                    <input type="text" class="form-control" id="inputSalesOrder" name="salesorder">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">RCT Package Serial No.</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputRCTPackageSerial">
+                    <input type="text" class="form-control" id="inputRCTPackageSerial" name="rctpackage">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">RCT Item Serial No.</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputRCTItemSerial">
+                    <input type="text" class="form-control" id="inputRCTItemSerial" name="itemserial">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputMakeModel" class="col-sm-2 col-form-label">Make/Model:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputMakeModel">
+                    <input type="text" class="form-control" id="inputMakeModel" name="makemodel">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputOS" class="col-sm-2 col-form-label">Operating System</label>
                 <div class="col-sm-4">
-                    <select class="custom-select" id="inputOSSelect" autocomplete="false">
+                    <select class="custom-select" id="inputOSSelect" autocomplete="false" name="operatingsystem">
                         <option selected>Choose...</option> 
                         <option value="1">Windows</option>
                         <option value="2">Linux</option>
@@ -134,7 +134,7 @@
             <div class="form-group row">
                 <label for="inputMSO" class="col-sm-2 col-form-label">Microsoft Office Installed</label>
                 <div class="col-sm-4">
-                    <select class="custom-select" id="inputMSOSelect">
+                    <select class="custom-select" id="inputMSOSelect" name="msoinstalled">
                         <option selected>Choose...</option>
                         <option value="1">YES</option>
                         <option value="2">NO</option>
@@ -144,7 +144,7 @@
             <div class="form-group row">
                 <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
                 <div class="col-sm-2">
-                    <select class="custom-select" id="inputProcessorType">
+                    <select class="custom-select" id="inputProcessorType" name="processortype">
                         <option selected>Choose...</option>
                         <option value="1">intel Core i3</option>
                         <option value="2">intel Core i5</option>
@@ -154,7 +154,7 @@
                 </div>
                 <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
                 <div class="col-sm-2">
-                    <select class="custom-select" id="inputProcessorType">
+                    <select class="custom-select" id="inputProcessorType" name="processorgen">
                         <option selected>Choose...</option>
                         <option value="1">1st Gen</option>
                         <option value="2">2nd Gen</option>
@@ -175,7 +175,7 @@
             <div class="form-group row">
                 <label for="inputDriveType" class="col-sm-2 col-form-label">HDD/SSD Type</label>
                 <div class="col-sm-2">
-                    <select class="custom-select" id="inputDriveType">
+                    <select class="custom-select" id="inputDriveType" name="drivetype">
                         <option selected>Choose...</option>
                         <option value="1">Hard Drive</option>
                         <option value="2">Solid State (2.5")</option>
@@ -185,7 +185,7 @@
                 </div>
                 <label for="inputRAMType" class="col-sm-0 col-form-label">RAM</label>
                 <div class="col-sm-1">
-                    <select class="custom-select" id="inputRAMType">
+                    <select class="custom-select" id="inputRAMType" name="ramtype">
                         <option selected>Choose...</option>
                         <option value="1">DDR3</option>
                         <option value="2">DDR4</option>
@@ -193,7 +193,7 @@
                     </select>
                 </div>
                 <div class="col-sm-1">
-                    <select class="custom-select" id="inputRAMSize">
+                    <select class="custom-select" id="inputRAMSize" name="ramsize">
                         <option selected>Choose...</option>
                         <option value="1">8 GB</option>
                         <option value="2">16 GB</option>
