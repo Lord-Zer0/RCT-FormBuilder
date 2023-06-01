@@ -144,7 +144,18 @@ function handleFormSubmit(event) {
         .join('&');
 
     console.log(asString);
+
+    saveFile(formData);
+
+    return formData;
 };
+
+// Code to save JSON as file
+function saveFile(obj) {
+    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+    
+    $('<a href="data:' + data + '"download="qcdata.json">download</a>').appendTo('#control-panel');
+}
 
 const form = document.querySelector("#laptop-qc-form");
 form.addEventListener("submit", handleFormSubmit);
