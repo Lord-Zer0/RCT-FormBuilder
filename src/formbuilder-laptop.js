@@ -38,7 +38,16 @@ const qcchecks = [
     { question: 'Items match Sales Order - Verified'}
 ];
 
-qno = 0;
+const reader = new FileReader();
+
+// Event listeners
+const qcform = document.querySelector("#laptop-qc-form");
+qcform.addEventListener("submit", handleFormSubmit);
+
+const upform = document.querySelector('#upload-form');
+upform.addEventListener("submit", handleFileSelect);
+
+let qno = 0;
 
 qcchecks.forEach(check => {
 
@@ -137,25 +146,42 @@ function handleFormSubmit(event) {
 
     console.log(JSON.stringify(formJSON, null, 2));
 
-    const formData = [...data.entries()];
 
-    const asString = formData
-        .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
-        .join('&');
+    // [Depreceated] formdata is a string method to autofill form from saved entries, replaced by json file load
+    // const formData = [...data.entries()];
 
-    console.log(asString);
+    // const asString = formData
+    //     .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
+    //     .join('&');
 
-    saveFile(formData);
+    // console.log(asString);
 
-    return formData;
-};
+    saveFile(formJSON);
+}
 
 // Code to save JSON as file
 function saveFile(obj) {
-    var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+    let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+    let fileName = '"download="qcdata-' + obj["itemserial"];
     
-    $('<a href="data:' + data + '"download="qcdata.json">download</a>').appendTo('#control-panel');
+    $('<a href="data:' + data + fileName + '.json">download</a>').appendTo('#control-panel');
 }
 
-const form = document.querySelector("#laptop-qc-form");
-form.addEventListener("submit", handleFormSubmit);
+// Code to upload JSON file to autofill form
+function handleFileSelect(event) {
+    event.preventDefault();
+    const selectedFile = event.target[0].files[0];
+    if (selectedFile) {
+        reader.addEventListener("load", handleFileLoad);
+        reader.readAsText(selectedFile);
+    }
+}
+
+function handleFileLoad(event) {
+    console.log(event);
+    
+    if (event.type === "load") {
+        console.log(reader.result);
+    }
+}
