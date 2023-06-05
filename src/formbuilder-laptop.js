@@ -65,7 +65,7 @@ qcchecks.forEach(check => {
 
         //qname = check.question.split(/[^a-z]i/)[0];
         //console.log(qname)
-        qname = check.question;
+        let qname = check.question;
 
         // Use query check names to describe each group of buttons (legacy)
         instance.querySelector('.qc1-toggle').setAttribute("name", qname + "_qc1");
@@ -95,47 +95,14 @@ function handleFormSubmit(event) {
 
     const data = new FormData(event.target);
 
-    const formJSON = Object.fromEntries(data.entries());
+    for (let i = 1; i < 30; i++) {
+        data.delete("q" + i + "_qc1");
+    }
 
-    var qmap = new Map();
+    const formJSON = Object.fromEntries(data.entries());    
 
-    qcheck = 0
-
-    qcchecks.forEach(check => {
-        if (check.question != undefined && check.question != null){
-            qcheck += 1
-            qname = "q" + JSON.stringify(qcheck) + "_qc1";
-            // console.log(qname);
-            // let qname = check.question + "_qc1";
-            // let elements = document.getElementsByName(qname);
-            // console.log(elements);
-            // console.log(elements[0]);
-            // let buttons = elements[0].children.getElementsByName('qc1');
-            // console.log(buttons);
-
-            let selectedv = "";
-
-            
-            let buttons = document.getElementsByName(qname);
-
-            if (buttons[0].checked) {
-                selectedv = "PASS"
-            }
-            if (buttons[1].checked) {
-                selectedv = "FAIL"
-            }
-            if (buttons[2].checked) {
-                selectedv = "N/A"
-            }
-
-
-
-            qmap[check.question] = selectedv;
-            //console.log(JSON.stringify(qmap));
-        }
-    });
-
-    formJSON.qc1 = JSON.stringify(qmap);
+    formJSON.qc1 = mapQCdata("qc1");
+    formJSON.qc2 = mapQCdata("qc2");
 
     // qcchecks.forEach(check => {
     //     if (check.isHeader != true) {
@@ -157,6 +124,37 @@ function handleFormSubmit(event) {
     // console.log(asString);
 
     saveFile(formJSON);
+}
+
+function mapQCdata(qcno) {
+    let qmap = new Map();
+    qcchecks.forEach(check => {
+        let qcheck = 0;
+
+        if (check.question != undefined && check.question != null){
+            qcheck += 1;
+            let qname = "q" + JSON.stringify(qcheck) + "_" + qcno;
+
+            let selectedv = "";            
+            let buttons = document.getElementsByName(qname);
+
+            if (buttons[0].checked) {
+                selectedv = "PASS"
+            }
+            if (buttons[1].checked) {
+                selectedv = "FAIL"
+            }
+            if (buttons[2].checked) {
+                selectedv = "N/A"
+            }
+
+
+            qmap[check.question] = selectedv;
+            //console.log(JSON.stringify(qmap));
+        }
+    });
+    
+    return JSON.stringify(qmap);
 }
 
 // Code to save JSON as file
@@ -183,5 +181,52 @@ function handleFileLoad(event) {
     
     if (event.type === "load") {
         console.log(reader.result);
+
+        const data = JSON.parse(reader.result);
+
+        // const asString = data
+        //     .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
+        //     .join('&');
+        // console.log(asString);
+        // const url = window.location.pathname + '?' + asString;
+        // window.location.href = url;
+
+        formAutofill(data);
     }
+}
+
+
+function formAutofill(data) {
+    const qcsheet = document.querySelector("#laptop-qc-form");
+    const qcJSON = Object.fromEntries(new FormData(qcsheet).entries());
+    console.log(qcJSON);
+
+    // Version 1.0 with jquery elements
+    // $("form#laptop-qc-form :input[type=text]").each(function(index) {
+    //     let input = $(this);
+    //     if (data[index])
+    // });
+
+    // Version 1.1 with hard coded element references
+    qcsheet.elements["buildlocation"].value = data["buildlocation"];
+    qcsheet.elements["qc1initial"].value = data["qc1initial"];
+    qcsheet.elements["qc2initial"].value = data["qc2initial"];
+    qcsheet.elements["assemblydate"].value = data["assemblydate"];
+    qcsheet.elements["salesorder"].value = data["salesorder"];
+    qcsheet.elements["rctpackage"].value = data["rctpackage"];
+    qcsheet.elements["itemserial"].value = data["itemserial"];
+    qcsheet.elements["makemodel"].value = data["makemodel"];
+    qcsheet.elements["operatingsystem"].value = data["operatingsystem"];
+    qcsheet.elements["msoinstalled"].value = data["msoinstalled"];
+    qcsheet.elements["processortype"].value = data["processortype"];
+    qcsheet.elements["processorgen"].value = data["processorgen"];
+    qcsheet.elements["drivetype"].value = data["drivetype"];
+    qcsheet.elements["ramtype"].value = data["ramtype"];
+    qcsheet.elements["ramsize"].value = data["ramsize"];
+    
+    // Now we need to do some work to format our buttons
+
+
+
+
 }
