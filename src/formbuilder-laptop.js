@@ -67,9 +67,9 @@ qcchecks.forEach(check => {
         //console.log(qname)
         let qname = check.question;
 
-        // Use query check names to describe each group of buttons (legacy)
-        instance.querySelector('.qc1-toggle').setAttribute("name", qname + "_qc1");
-        instance.querySelector('.qc2-toggle').setAttribute("name", qname + "_qc2");
+        // Use query check names to describe each group of buttons
+        instance.querySelector('#qc1-toggle').setAttribute("name", qname + "_qc1");
+        instance.querySelector('#qc2-toggle').setAttribute("name", qname + "_qc2");
 
         // Redefine the 'name' property of each button in the instance and increment
 
@@ -97,6 +97,7 @@ function handleFormSubmit(event) {
 
     for (let i = 1; i < 30; i++) {
         data.delete("q" + i + "_qc1");
+        data.delete("q" + i + "_qc2");
     }
 
     const formJSON = Object.fromEntries(data.entries());    
@@ -163,7 +164,7 @@ function saveFile(obj) {
 
     let fileName = '"download="qcdata-' + obj["itemserial"];
     
-    $('<a href="data:' + data + fileName + '.json">download</a>').appendTo('#control-panel');
+    document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + fileName + '.json" role="button">download</a>';
 }
 
 // Code to upload JSON file to autofill form
@@ -225,8 +226,52 @@ function formAutofill(data) {
     qcsheet.elements["ramsize"].value = data["ramsize"];
     
     // Now we need to do some work to format our buttons
+    let q1checks = JSON.parse(data["qc1"]);
+    let q2checks = JSON.parse(data["qc1"]);
+    console.log(q1checks);
+    let qcheck = 0;
 
+    for (let key in q1checks) {
+        console.log(key);
+        qcheck += 1;
 
+        let qname = "q" + JSON.stringify(qcheck) + "_qc1";
+        let buttons = document.getElementsByName(qname);
+
+        if (q1checks[key] == "PASS") {
+            buttons[0].checked = true;
+        }
+        if (q1checks[key] == "FAIL") {
+            buttons[0].checked = true;
+        }
+        if (q1checks[key] == "NA") {
+            buttons[0].checked = true;
+        }
+        
+    }
+    qcheck = 0;
+
+    for (let key in q2checks) {
+        qcheck += 1;
+
+        let qname = "q" + JSON.stringify(qcheck) + "_qc2";
+        let buttons = document.getElementsByName(qname);
+
+        if (q2checks[key] == "PASS") {
+            buttons[0].checked = true;
+        }
+        if (q2checks[key] == "FAIL") {
+            buttons[0].checked = true;
+        }
+        if (q2checks[key] == "NA") {
+            buttons[0].checked = true;
+        }
+    }
+
+    // get questiontextname_qc1
+    // if PASS, set qc1-pass to ACTIVE
+    // same for FAIL, qc1-fail
+    // N/A, qc1-na
 
 
 }
