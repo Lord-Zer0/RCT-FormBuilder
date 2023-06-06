@@ -3,7 +3,7 @@
     
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="stylesheet" type="text/css" href="main.css">
         <!--Import bootstrap for form elements -->
@@ -27,27 +27,27 @@
             <div class="form-group row">
                 <label for="inputTemplate" class="col-sm-4 col-form-label"><span class="question"></span></label>
                 <div class="col-sm-8">    
-                        <div class="btn-group btn-group-toggle qc1-toggle" data-toggle="buttons" aria-label="QC1 group">
+                        <div class="btn-group btn-group-toggle qc1-toggle" id="qc1-toggle" data-toggle="buttons" aria-label="QC1 group">
                             <label class="btn btn-pass">
                                 <input type="radio" name="qc1" id="qc1-pass" autocomplete="off">PASS
-                            </label>
-                            <label class="btn btn-na">
-                                <input type="radio" name="qc1" id="qc1-na" autocomplete="off">N/A
                             </label>
                             <label class="btn btn-fail">
                                 <input type="radio" name="qc1" id="qc1-fail" autocomplete="off">FAIL
                             </label>
+                            <label class="btn btn-na">
+                                <input type="radio" name="qc1" id="qc1-na" autocomplete="off">N/A
+                            </label>
                         </div>
                         <span class="col-sm-1"></span>
-                        <div class="btn-group btn-group-toggle qc2-toggle" data-toggle="buttons" aria-label="QC2 group">
+                        <div class="btn-group btn-group-toggle qc2-toggle" id="qc2-toggle" data-toggle="buttons" aria-label="QC2 group">
                             <label class="btn btn-pass">
                                 <input type="radio" name="qc2" id="qc2-pass" autocomplete="off">PASS
                             </label>
-                            <label class="btn btn-na">
-                                <input type="radio" name="qc2" id="qc2-na" autocomplete="off">N/A
-                            </label>
                             <label class="btn btn-fail">
                                 <input type="radio" name="qc2" id="qc2-fail" autocomplete="off">FAIL
+                            </label>
+                            <label class="btn btn-na">
+                                <input type="radio" name="qc2" id="qc2-na" autocomplete="off">N/A
                             </label>
                         </div>
                     </div>
@@ -80,13 +80,13 @@
             <div class="form-group row">
                 <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputQC1Name" name="qc1inital" placeholder="Assembly Tech">
+                    <input type="text" class="form-control" id="inputQC1Name" name="qc1initial" placeholder="Assembly Tech">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputQC2Name" name="qc2inital" placeholder="SR Tech/Supervisor">
+                    <input type="text" class="form-control" id="inputQC2Name" name="qc2initial" placeholder="SR Tech/Supervisor">
                 </div>
             </div>
             <br>
@@ -215,9 +215,20 @@
     
             <div class="form-group row" id="control-panel">
                 <span class="col-sm-1"></span>
-                <button type="reset" class="button btn-primary" id="clearButton" onclick="window.location.reload()">RESET</button>
-                <button type="submit" class="button btn-primary" id="saveButton">SAVE</button>
-                <button type="button" class="button btn-primary" id="printButton" onclick="print()">PRINT</button>
+                <button type="reset" class="btn btn-primary" id="clearButton" onclick="window.location.reload()">RESET</button>
+                <button type="submit" class="btn btn-primary" id="saveButton">SAVE</button>
+                <button type="button" class="btn btn-primary" id="printButton" onclick="print()">PRINT</button>
+                <span id="downloadLink"></span>
+            </div>
+        </form>
+
+        <form id="upload-form" class="qc-form">
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <label for="uploadJSON" class="form-label">Select a valid qcsheet.json file to upload</label>
+                    <input class="form-control" type="file" id="formFile" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary" id="uploadButton">Load</button>
             </div>
         </form>
  
