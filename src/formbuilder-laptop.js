@@ -239,13 +239,13 @@ function formAutofill(data) {
         let buttons = document.getElementsByName(qname);
 
         if (q1checks[key] == "PASS") {
-            buttons[0].checked = true;
+            buttons[0].click();
         }
         if (q1checks[key] == "FAIL") {
-            buttons[0].checked = true;
+            buttons[1].click();
         }
         if (q1checks[key] == "NA") {
-            buttons[0].checked = true;
+            buttons[2].click();
         }
         
     }
@@ -258,13 +258,13 @@ function formAutofill(data) {
         let buttons = document.getElementsByName(qname);
 
         if (q2checks[key] == "PASS") {
-            buttons[0].checked = true;
+            buttons[0].click();
         }
         if (q2checks[key] == "FAIL") {
-            buttons[0].checked = true;
+            buttons[1].click();
         }
         if (q2checks[key] == "NA") {
-            buttons[0].checked = true;
+            buttons[2].click();
         }
     }
 
