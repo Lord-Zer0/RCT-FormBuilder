@@ -3,7 +3,7 @@
    <img width=600px height=200px src="https://rcto.wpengine.com/wp-content/uploads/2022/03/logo.png" alt="RCT logo"></a>
 </p>
 
-<h3 align="center">RCT Form-Builder</h3>
+<h3 align="center">RCT Form Builder</h3>
 
 <div align="center">
 
@@ -41,13 +41,36 @@ To get the latest version of the application, navigate to https://github.com/Lor
 3. Open the downloaded folder and run either laptop.html or desktop.html in your browser of choice.
 
 ### For testing
-1. Install Git https://git-scm.com/downloads
+1. Install Git https://git-scm.com/downloads.
 2. Navigate to the working directory where you would like to install the application.
-3. Run the following git command in your terminal (Note: this may require an active Github Login)
+3. Run the following git command in your terminal (Note: this may require an active Github Login).
 ```
-$ git clone https://github.com/Lord-Zer0/RCT-FormBuilder.git
+$ git clone https://github.com/Lord-Zer0/RCT-FormBuilder.git.
 ```
 4. Open the downloaded folder and run either laptop.html or desktop.html in your browser of choice.
+
+### To Contribute
+1. Sign in using your [Github](https://github.com/) account.
+2. Fork the repo at https://github.com/Lord-Zer0/RCT-FormBuilder.
+3. Check out a new branch and name it like so:
+```
+$ git checkout -b BRANCH_NAME
+```
+  if you get an error, you may need to fetch first
+```
+$ git remote update && git fetch
+```
+4. Commit your changes.
+    - provide a message explaining what you've done
+    - commit to the forked repository i.e.
+```
+$ git commit -am 'Made some update'
+```
+5. Push to the branch.
+```
+$ git push origin BRANCH_NAME
+```
+6. Open a [pull request](https://github.com/Lord-Zer0/RCT-FormBuilder/pulls).
 
 
 ## Using the Application <a name="usage"></a>
