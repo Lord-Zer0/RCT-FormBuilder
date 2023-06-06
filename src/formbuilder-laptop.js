@@ -227,7 +227,7 @@ function formAutofill(data) {
     
     // Now we need to do some work to format our buttons
     let q1checks = JSON.parse(data["qc1"]);
-    let q2checks = JSON.parse(data["qc1"]);
+    let q2checks = JSON.parse(data["qc2"]);
     console.log(q1checks);
     let qcheck = 0;
 
