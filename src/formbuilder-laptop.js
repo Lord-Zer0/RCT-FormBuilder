@@ -49,6 +49,14 @@ upform.addEventListener("submit", handleFileSelect);
 
 let qno = 0;
 
+// Error Checking
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+    }
+}
+
 qcchecks.forEach(check => {
 
     if (check.isHeader == true) {
@@ -63,8 +71,6 @@ qcchecks.forEach(check => {
         const instance = document.importNode(qcblock.content, true);
         instance.querySelector('.question').innerHTML = check.question;
 
-        //qname = check.question.split(/[^a-z]i/)[0];
-        //console.log(qname)
         let qname = check.question;
 
         // Use query check names to describe each group of buttons
@@ -81,10 +87,6 @@ qcchecks.forEach(check => {
         instance.querySelector('#qc2-fail').setAttribute("name", "q" + JSON.stringify(qno) + "_qc2");
         instance.querySelector('#qc2-na').setAttribute("name", "q" + JSON.stringify(qno) + "_qc2");
 
-
-        // const qc1 = instance.querySelector('.qc1-toggle');
-
-
         // Append the instance at the DOM
         document.getElementById('qcchecks').appendChild(instance);
     }
@@ -100,29 +102,13 @@ function handleFormSubmit(event) {
         data.delete("q" + i + "_qc2");
     }
 
-    const formJSON = Object.fromEntries(data.entries());    
+    const formJSON = Object.fromEntries(data.entries());
+    formJSON.buildtype = "Laptop"
 
     formJSON.qc1 = mapQCdata("qc1");
     formJSON.qc2 = mapQCdata("qc2");
 
-    // qcchecks.forEach(check => {
-    //     if (check.isHeader != true) {
-    //         instance.getElementById('.')
-    //         formJSON.append(check.question, )
-    //     }
-    // });
-
     console.log(JSON.stringify(formJSON, null, 2));
-
-
-    // [Depreceated] formdata is a string method to autofill form from saved entries, replaced by json file load
-    // const formData = [...data.entries()];
-
-    // const asString = formData
-    //     .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
-    //     .join('&');
-
-    // console.log(asString);
 
     saveFile(formJSON);
 }
@@ -149,9 +135,7 @@ function mapQCdata(qcno) {
                 selectedv = "N/A"
             }
 
-
             qmap[check.question] = selectedv;
-            //console.log(JSON.stringify(qmap));
         }
     });
     
@@ -161,7 +145,6 @@ function mapQCdata(qcno) {
 // Code to save JSON as file
 function saveFile(obj) {
     let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-
     let fileName = '"download="qcdata-' + obj["itemserial"];
     
     document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + fileName + '.json" role="button">download</a>';
@@ -178,14 +161,18 @@ function handleFileSelect(event) {
 }
 
 function handleFileLoad(event) {
-    console.log(event);
     
     if (event.type === "load") {
-        console.log(reader.result);
 
         const data = JSON.parse(reader.result);
 
-        formAutofill(data);
+        try {
+            formAutofill(data);
+        } catch(err) {
+            alert(err.message);
+            console.log(err.name);
+            console.log(err.stack);
+        }
     }
 }
 
@@ -193,7 +180,10 @@ function handleFileLoad(event) {
 function formAutofill(data) {
     const qcsheet = document.querySelector("#laptop-qc-form");
     const qcJSON = Object.fromEntries(new FormData(qcsheet).entries());
-    console.log(qcJSON);
+
+    if (data["buildtype"] != "Laptop") {
+        throw new ValidationError("Incorrect build type, this qc sheet does not reference a laptop or tablet");
+    }
 
     // Version 1.1 with hard coded element references
     qcsheet.elements["buildlocation"].value = data["buildlocation"];
@@ -211,15 +201,14 @@ function formAutofill(data) {
     qcsheet.elements["drivetype"].value = data["drivetype"];
     qcsheet.elements["ramtype"].value = data["ramtype"];
     qcsheet.elements["ramsize"].value = data["ramsize"];
+    qcsheet.elements["technotes"].value = data["technotes"];
     
     // Now we need to do some work to format our buttons
     let q1checks = JSON.parse(data["qc1"]);
     let q2checks = JSON.parse(data["qc2"]);
-    console.log(q1checks);
     let qcheck = 0;
 
     for (let key in q1checks) {
-        console.log(key);
         qcheck += 1;
 
         let qname = "q" + JSON.stringify(qcheck) + "_qc1";
