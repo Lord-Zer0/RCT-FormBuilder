@@ -49,6 +49,14 @@ upform.addEventListener("submit", handleFileSelect);
 
 let qno = 0;
 
+// Error Checking
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+    }
+}
+
 qcchecks.forEach(check => {
 
     if (check.isHeader == true) {
@@ -100,7 +108,8 @@ function handleFormSubmit(event) {
         data.delete("q" + i + "_qc2");
     }
 
-    const formJSON = Object.fromEntries(data.entries());    
+    const formJSON = Object.fromEntries(data.entries());
+    formJSON.buildtype = "Laptop"
 
     formJSON.qc1 = mapQCdata("qc1");
     formJSON.qc2 = mapQCdata("qc2");
@@ -185,7 +194,13 @@ function handleFileLoad(event) {
 
         const data = JSON.parse(reader.result);
 
-        formAutofill(data);
+        try {
+            formAutofill(data);
+        } catch(err) {
+            alert(err.message);
+            console.log(err.name);
+            console.log(err.stack);
+        }
     }
 }
 
@@ -194,6 +209,10 @@ function formAutofill(data) {
     const qcsheet = document.querySelector("#laptop-qc-form");
     const qcJSON = Object.fromEntries(new FormData(qcsheet).entries());
     console.log(qcJSON);
+
+    if (data["buildtype"] != "Laptop") {
+        throw new ValidationError("Incorrect build type, this qc sheet does not reference a laptop or tablet");
+    }
 
     // Version 1.1 with hard coded element references
     qcsheet.elements["buildlocation"].value = data["buildlocation"];
