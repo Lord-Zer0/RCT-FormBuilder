@@ -129,8 +129,8 @@ function handleFormSubmit(event) {
 
 function mapQCdata(qcno) {
     let qmap = new Map();
+    let qcheck = 0;
     qcchecks.forEach(check => {
-        let qcheck = 0;
 
         if (check.question != undefined && check.question != null){
             qcheck += 1;
@@ -185,13 +185,6 @@ function handleFileLoad(event) {
 
         const data = JSON.parse(reader.result);
 
-        // const asString = data
-        //     .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
-        //     .join('&');
-        // console.log(asString);
-        // const url = window.location.pathname + '?' + asString;
-        // window.location.href = url;
-
         formAutofill(data);
     }
 }
@@ -201,12 +194,6 @@ function formAutofill(data) {
     const qcsheet = document.querySelector("#laptop-qc-form");
     const qcJSON = Object.fromEntries(new FormData(qcsheet).entries());
     console.log(qcJSON);
-
-    // Version 1.0 with jquery elements
-    // $("form#laptop-qc-form :input[type=text]").each(function(index) {
-    //     let input = $(this);
-    //     if (data[index])
-    // });
 
     // Version 1.1 with hard coded element references
     qcsheet.elements["buildlocation"].value = data["buildlocation"];
@@ -240,12 +227,15 @@ function formAutofill(data) {
 
         if (q1checks[key] == "PASS") {
             buttons[0].click();
+            buttons[0].checked = true;
         }
         if (q1checks[key] == "FAIL") {
             buttons[1].click();
+            buttons[1].checked = true;
         }
-        if (q1checks[key] == "NA") {
+        if (q1checks[key] == "N/A") {
             buttons[2].click();
+            buttons[2].checked = true;
         }
         
     }
@@ -259,19 +249,15 @@ function formAutofill(data) {
 
         if (q2checks[key] == "PASS") {
             buttons[0].click();
+            buttons[0].checked = true;
         }
         if (q2checks[key] == "FAIL") {
             buttons[1].click();
+            buttons[1].checked = true;
         }
-        if (q2checks[key] == "NA") {
+        if (q2checks[key] == "N/A") {
             buttons[2].click();
+            buttons[2].checked = true;
         }
     }
-
-    // get questiontextname_qc1
-    // if PASS, set qc1-pass to ACTIVE
-    // same for FAIL, qc1-fail
-    // N/A, qc1-na
-
-
 }
