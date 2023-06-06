@@ -80,5 +80,5 @@ Note that While the content of desktop.html and laptop.html differ, their use-ca
 - [@Lord_Zer0](https://github.com/Lord-Zer0) - Program developer & initial work
 
 ## Acknowledgements <a name="acknowledgement">
-- [@kylelobo](https://github.com/kylelobo) - Author of [The Documentation Compendium) on Github
+- [@kylelobo](https://github.com/kylelobo) - Author of [The Documentation Compendium](https://github.com/kylelobo/The-Documentation-Compendium) on Github
 - All my fellow techs at RCT@Niagara who helped in the development, review, and testing
