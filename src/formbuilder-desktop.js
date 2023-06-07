@@ -55,9 +55,14 @@ qcchecks.forEach(check => {
 
     if (check.isHeader == true) {
         const instance = document.importNode(headerblock.content, true);
-        instance.querySelector('.heading').innerHTML = check.heading;
 
         // Append the instance at the DOM
+        if (check.heading == "Visual Inspection"){
+            instance.querySelector('.heading').innerHTML = '<div class="row"><p class="col">' + check.heading + '</p><span class="col text-center">QC1</span><span class="col text-center">QC2</span><span class="col"></span><span class="col text-center">QC1</span><span class="col text-center">QC2</span></div>';
+        } else {
+            instance.querySelector('.heading').innerHTML = check.heading;
+        }
+
         document.getElementById('qcchecks').appendChild(instance);
     } else {
         // Create an instance of the template content
@@ -180,10 +185,10 @@ function formAutofill(data) {
     }
 
     // Version 1.1 with hard coded element references
+    qcsheet.elements["assemblydate"].value = data["assemblydate"];
     qcsheet.elements["buildlocation"].value = data["buildlocation"];
     qcsheet.elements["qc1initial"].value = data["qc1initial"];
     qcsheet.elements["qc2initial"].value = data["qc2initial"];
-    qcsheet.elements["assemblydate"].value = data["assemblydate"];
     qcsheet.elements["salesorder"].value = data["salesorder"];
     qcsheet.elements["rctpackage"].value = data["rctpackage"];
     qcsheet.elements["itemserial"].value = data["itemserial"];
