@@ -97,7 +97,7 @@ function handleFormSubmit(event) {
 
     const data = new FormData(event.target);
 
-    for (let i = 1; i < 30; i++) {
+    for (let i = 1; i < qcchecks.length; i++) {
         data.delete("q" + i + "_qc1");
         data.delete("q" + i + "_qc2");
     }
@@ -226,6 +226,9 @@ function formAutofill(data) {
             buttons[2].click();
             buttons[2].checked = true;
         }
+        if (q1checks[key] == "") {
+            q1checks.forEach((b) => b.checked = false);
+        }
         
     }
     qcheck = 0;
@@ -247,6 +250,9 @@ function formAutofill(data) {
         if (q2checks[key] == "N/A") {
             buttons[2].click();
             buttons[2].checked = true;
+        }
+        if (q1checks[key] == "") {
+            q1checks.forEach((b) => b.checked = false);
         }
     }
 }
