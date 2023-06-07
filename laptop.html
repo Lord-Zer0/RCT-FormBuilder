@@ -17,15 +17,13 @@
         <!-- repeatable template for Header group rows -->
         <template id="heading-template">
             <div class="form-text" id="groupHeadingTemplate">
-                <h3 id="infoHeadingTemplate"><span class="heading"></span></h3>
+                <h4 id="infoHeadingTemplate"><span class="heading"></span></h4>
             </div>
         </template>
 
         <!-- repeatable template for QC Button rows -->
         <template id="qc-template">
-            <div class="form-group row">
-                <label for="inputTemplate" class="col-sm-4 col-form-label"><span class="question"></span></label>
-                <div class="col-sm-8">    
+                <label id="inputTemplate" class="col-sm-3 col-form-label"><span class="question"></span></label>  
                         <div class="btn-group btn-group-toggle qc1-toggle" id="qc1-toggle" data-toggle="buttons" aria-label="QC1 group">
                             <label class="btn btn-pass">
                                 <input type="radio" name="qc1" id="qc1-pass" autocomplete="off">PASS
@@ -49,9 +47,6 @@
                                 <input type="radio" name="qc2" id="qc2-na" autocomplete="off">N/A
                             </label>
                         </div>
-                    </div>
-                </div>
-            </div>
         </template>
 
 
@@ -64,7 +59,7 @@
                 </p><br>
             </b>
 
-            <div class="form-group row">
+            <div class="form-group row d-none"> 
                 <label for="inputBuildType" class="col-sm-2 col-form-label">QC Sheet For:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control" id="inputType" name="buildtype" value="Laptop" readonly>
@@ -72,8 +67,13 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputLocation" class="col-sm-2 col-form-label">Build Location</label>
-                <div class="col-sm-4">
+                <label for="inputAssemblyDate" class="col-sm-1 col-form-label">Date:</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control" id="inputAssemblyDate" name="assemblydate">
+                </div>
+
+                <label for="inputLocation" class="col-sm-1 col-form-label">Build Location</label>
+                <div class="col-sm-1">
                     <select class="custom-select" id="inputLocation" name="buildlocation">
                         <option selected>Choose...</option>
                         <option value="1">Niagara</option>
@@ -81,54 +81,41 @@
                         <option value="3">Toronto</option>
                     </select>
                 </div>
-            </div>
-    
-            <div class="form-group row">
+
                 <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
-                <div class="col-sm-4">
+                <div class="col-sm-1">
                     <input type="text" class="form-control" id="inputQC1Name" name="qc1initial" placeholder="Assembly Tech">
                 </div>
-            </div>
-            <div class="form-group row">
+                
                 <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
-                <div class="col-sm-4">
+                <div class="col-sm-1">
                     <input type="text" class="form-control" id="inputQC2Name" name="qc2initial" placeholder="SR Tech/Supervisor">
                 </div>
             </div>
-            <br>
             <div class="form-group row">
-                <label for="inputAssemblyDate" class="col-sm-2 col-form-label">Date: DD/MM/YYYY</label>
-                <div class="col-sm-4">
-                    <input type="date" class="form-control" id="inputAssemblyDate" name="assemblydate">
+                <label for="inputSageOrder" class="col-sm-2 col-form-label">Sage Order No.</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="inputSageOrder" name="salesorder">
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputSalesOrder" class="col-sm-2 col-form-label">Sales Order No.</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputSalesOrder" name="salesorder">
-                </div>
-            </div>
-            <div class="form-group row">
+
                 <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">RCT Package Serial No.</label>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputRCTPackageSerial" name="rctpackage">
                 </div>
-            </div>
-            <div class="form-group row">
+
                 <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">RCT Item Serial No.</label>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputRCTItemSerial" name="itemserial">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputMakeModel" class="col-sm-2 col-form-label">Make/Model:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputMakeModel" name="makemodel">
                 </div>
-            </div>
-            <div class="form-group row">
+
                 <label for="inputOS" class="col-sm-2 col-form-label">Operating System</label>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <select class="custom-select" id="inputOSSelect" autocomplete="false" name="operatingsystem">
                         <option selected>Choose...</option> 
                         <option value="1">Windows</option>
@@ -136,10 +123,8 @@
                         <option value="3">Chrome OS</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group row">
                 <label for="inputMSO" class="col-sm-2 col-form-label">Microsoft Office Installed</label>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <select class="custom-select" id="inputMSOSelect" name="msoinstalled">
                         <option selected>Choose...</option>
                         <option value="1">YES</option>
@@ -159,7 +144,7 @@
                     </select>
                 </div>
                 <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
-                <div class="col-sm-2">
+                <div class="col-sm-1">
                     <select class="custom-select" id="inputProcessorType" name="processorgen">
                         <option selected>Choose...</option>
                         <option value="1">1st Gen</option>
@@ -177,8 +162,7 @@
                         <option value="13">13th Gen</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group row">
+
                 <label for="inputDriveType" class="col-sm-2 col-form-label">HDD/SSD Type</label>
                 <div class="col-sm-2">
                     <select class="custom-select" id="inputDriveType" name="drivetype">
@@ -209,14 +193,7 @@
             
             <!--Rows for QC information is imported here-->
             <div id="qcchecks">
-                <div class="form-group row">
-                    <span class="col-sm-4"></span>
-                    <span class="col-sm-6 form-group-row">
-                        <label class="col-sm-4 col-form-label center"><h4>QC1</h4></label>
-                        <span class="col-sm-2"></span>
-                        <label class="col-sm-4 col-form-label center"><h4>QC2</h4></label>
-                    </span>
-                </div>
+
             </div>
 
             <div class="form-group d-print-none">

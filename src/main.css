@@ -26,3 +26,22 @@ body {
 .break-line {
     page-break-after: always;
 }
+
+@media print {
+    header, footer {
+        display: none;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    body {
+        font: 10pt Georgia, "Times New Roman", Times, serif;
+    }
+
+    .btn:not(.active) {
+        display: none;
+    }
+    
+}
