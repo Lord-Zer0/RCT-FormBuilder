@@ -109,7 +109,11 @@ function handleFormSubmit(event) {
 
     console.log(JSON.stringify(formJSON, null, 2));
 
-    saveFile(formJSON);
+    try {
+        saveFile(formJSON);
+    } catch (err) {
+        alert(err.message);
+    }
 }
 
 function mapQCdata(qcno) {
@@ -168,6 +172,10 @@ function saveFile(obj) {
     if (passing) {
         fileName += '-PASS';
         console.log("All QC Checks Passed!");
+    }
+
+    if (fileName == "") {
+        throw new ValidationError("File must contain a unit number i.e. SHID-0012345");
     }
 
     console.log("Filename: " + fileName);
