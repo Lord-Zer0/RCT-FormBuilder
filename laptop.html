@@ -52,12 +52,19 @@
 
         <form id="laptop-qc-form" class="qc-form" method="post">
             <h1>Quality Control Form - Laptop/Tablet</h1>
-            <b>
-                <p>
-                    This form is to be completed prior to equipment delivery <br>
-                    1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.
-                </p><br>
-            </b>
+
+            <div class="form-group row">
+                        <b><p class="col">
+                            This form is to be completed prior to equipment delivery <br>
+                            1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.
+                            
+                        </p></b>
+
+                        <label for="inputAssemblyDate" class="col-sm-1 col-form-label">Date:</label>
+                        <div class="col-sm-2">
+                            <input type="date" class="form-control" id="inputAssemblyDate" name="assemblydate">
+                        </div>
+            </div>
 
             <div class="form-group row d-none"> 
                 <label for="inputBuildType" class="col-sm-2 col-form-label">QC Sheet For:</label>
@@ -67,43 +74,39 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputAssemblyDate" class="col-sm-1 col-form-label">Date:</label>
-                <div class="col-sm-2">
-                    <input type="date" class="form-control" id="inputAssemblyDate" name="assemblydate">
-                </div>
 
-                <label for="inputLocation" class="col-sm-1 col-form-label">Build Location</label>
-                <div class="col-sm-1">
+                <label for="inputLocation" class="col-sm-2 col-form-label">RCT Location</label>
+                <div class="col-sm-2">
                     <select class="custom-select" id="inputLocation" name="buildlocation">
                         <option selected>Choose...</option>
-                        <option value="1">Niagara</option>
-                        <option value="2">Mississauga</option>
-                        <option value="3">Toronto</option>
+                        <option value="1">NIA</option>
+                        <option value="2">MIS</option>
+                        <option value="3">GTA</option>
                     </select>
                 </div>
 
-                <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
-                <div class="col-sm-1">
+                <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 Initial</label>
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputQC1Name" name="qc1initial" placeholder="Assembly Tech">
                 </div>
                 
-                <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
-                <div class="col-sm-1">
+                <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 Initial</label>
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputQC2Name" name="qc2initial" placeholder="SR Tech/Supervisor">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputSageOrder" class="col-sm-2 col-form-label">Sage Order No.</label>
+                <label for="inputSageOrder" class="col-sm-2 col-form-label">Order No.</label>
                 <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputSageOrder" name="salesorder">
                 </div>
 
-                <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">RCT Package Serial No.</label>
+                <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">Package No.</label>
                 <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputRCTPackageSerial" name="rctpackage">
                 </div>
 
-                <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">RCT Item Serial No.</label>
+                <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">Unit No.</label>
                 <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputRCTItemSerial" name="itemserial">
                 </div>
@@ -123,7 +126,7 @@
                         <option value="3">Chrome OS</option>
                     </select>
                 </div>
-                <label for="inputMSO" class="col-sm-2 col-form-label">Microsoft Office Installed</label>
+                <label for="inputMSO" class="col-sm-2 col-form-label">MS Office</label>
                 <div class="col-sm-2">
                     <select class="custom-select" id="inputMSOSelect" name="msoinstalled">
                         <option selected>Choose...</option>
@@ -133,19 +136,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
-                <div class="col-sm-2">
+                <label for="inputProcessorType" class="col col-form-label">Processor Type  </label>
+                <div class="col">
                     <select class="custom-select" id="inputProcessorType" name="processortype">
                         <option selected>Choose...</option>
-                        <option value="1">intel Core i3</option>
-                        <option value="2">intel Core i5</option>
-                        <option value="3">intel Core i7</option>
-                        <option value="4">intel Core i9</option>
+                        <option value="1">Core i3</option>
+                        <option value="2">Core i5</option>
+                        <option value="3">Core i7</option>
+                        <option value="4">Core i9</option>
                     </select>
                 </div>
-                <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
-                <div class="col-sm-1">
-                    <select class="custom-select" id="inputProcessorType" name="processorgen">
+                <label for="inputProcessorGen" class="col col-form-label">GEN</label>
+                <div class="col">
+                    <select class="custom-select" id="inputProcessorGen" name="processorgen">
                         <option selected>Choose...</option>
                         <option value="1">1st Gen</option>
                         <option value="2">2nd Gen</option>
@@ -163,8 +166,8 @@
                     </select>
                 </div>
 
-                <label for="inputDriveType" class="col-sm-2 col-form-label">HDD/SSD Type</label>
-                <div class="col-sm-2">
+                <label for="inputDriveType" class="col col-form-label">HDD/SSD Type</label>
+                <div class="col">
                     <select class="custom-select" id="inputDriveType" name="drivetype">
                         <option selected>Choose...</option>
                         <option value="1">Hard Drive</option>
@@ -173,8 +176,8 @@
                         <option value="4">NVMe</option>
                     </select>
                 </div>
-                <label for="inputRAMType" class="col-sm-0 col-form-label">RAM</label>
-                <div class="col-sm-1">
+                <label for="inputRAMType" class="col col-form-label">RAM</label>
+                <div class="col">
                     <select class="custom-select" id="inputRAMType" name="ramtype">
                         <option selected>Choose...</option>
                         <option value="1">DDR3</option>
@@ -182,7 +185,7 @@
                         <option value="3">DDR5</option>
                     </select>
                 </div>
-                <div class="col-sm-1">
+                <div class="col">
                     <select class="custom-select" id="inputRAMSize" name="ramsize">
                         <option selected>Choose...</option>
                         <option value="1">8 GB</option>

@@ -149,11 +149,30 @@ function mapQCdata(qcno) {
 }
 
 // Code to save JSON as file
+// TODO: Append PASS or FAIL
 function saveFile(obj) {
     let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-    let fileName = '"download="qcdata-' + obj["itemserial"];
-    
-    document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + fileName + '.json" role="button">download</a>';
+
+    // Check if all are passing (APPEND PASS)
+    // One FAIL
+    // or incomplete
+    let fileName = obj["itemserial"];
+
+    const qc1 = JSON.parse(obj["qc1"]);
+    const qc2 = JSON.parse(obj["qc2"]);
+
+
+    for (key in qc1) {
+        if (qc1[key] == "FAIL" || qc2[key] == "FAIL") {
+            fileName += '-FAIL';
+            console.log("Failure detected!");
+            break;
+        }    
+    }
+
+    console.log("Filename: " + fileName);
+
+    document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + '"download="' + fileName + '.json" role="button">download</a>';
 }
 
 // Code to upload JSON file to autofill form
@@ -161,6 +180,9 @@ function handleFileSelect(event) {
     event.preventDefault();
     const selectedFile = event.target[0].files[0];
     if (selectedFile) {
+        const fname = (selectedFile.name).split(/[^A-Za-z_-]/);
+        console.log(fname);
+        document.title = fname[0];
         reader.addEventListener("load", handleFileLoad);
         reader.readAsText(selectedFile);
     }
@@ -171,6 +193,7 @@ function handleFileLoad(event) {
     if (event.type === "load") {
 
         const data = JSON.parse(reader.result);
+        console.log(reader.result);
 
         try {
             formAutofill(data);
