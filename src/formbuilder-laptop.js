@@ -49,7 +49,6 @@ upform.addEventListener("submit", handleFileSelect);
 
 let qno = 0;
 
-
 // Error Checking
 class ValidationError extends Error {
     constructor(message) {
@@ -109,7 +108,7 @@ function handleFormSubmit(event) {
     }
 
     const formJSON = Object.fromEntries(data.entries());
-    formJSON.buildtype = "Laptop"
+    formJSON.buildtype = "Laptop";
 
     formJSON.qc1 = mapQCdata("qc1");
     formJSON.qc2 = mapQCdata("qc2");
@@ -149,25 +148,32 @@ function mapQCdata(qcno) {
 }
 
 // Code to save JSON as file
-// TODO: Append PASS or FAIL
 function saveFile(obj) {
     let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
 
     // Check if all are passing (APPEND PASS)
-    // One FAIL
-    // or incomplete
+    // One FAIL, or incomplete
     let fileName = obj["itemserial"];
 
     const qc1 = JSON.parse(obj["qc1"]);
     const qc2 = JSON.parse(obj["qc2"]);
+    let passing = false;
 
 
     for (key in qc1) {
         if (qc1[key] == "FAIL" || qc2[key] == "FAIL") {
+            passing = false;
             fileName += '-FAIL';
             console.log("Failure detected!");
             break;
-        }    
+        } else if (qc1[key] != "" && qc2[key] != ""){
+            passing = true;
+        }
+    }
+
+    if (passing) {
+        fileName += '-PASS';
+        console.log("All QC Checks Passed!");
     }
 
     console.log("Filename: " + fileName);
@@ -256,7 +262,7 @@ function formAutofill(data) {
             buttons[2].checked = true;
         }
         if (q1checks[key] == "") {
-            q1checks.forEach((b) => b.checked = false);
+            buttons.forEach((b) => b.checked = false);
         }
         
     }
@@ -281,7 +287,7 @@ function formAutofill(data) {
             buttons[2].checked = true;
         }
         if (q1checks[key] == "") {
-            q1checks.forEach((b) => b.checked = false);
+            buttons.forEach((b) => b.checked = false);
         }
     }
 }

@@ -101,7 +101,8 @@ function handleFormSubmit(event) {
         data.delete("q" + i + "_qc2");
     }
 
-    const formJSON = Object.fromEntries(data.entries());    
+    const formJSON = Object.fromEntries(data.entries());
+    formJSON.buildtype = "Desktop";
 
     formJSON.qc1 = mapQCdata("qc1");
     formJSON.qc2 = mapQCdata("qc2");
@@ -115,7 +116,6 @@ function mapQCdata(qcno) {
     let qmap = new Map();
     let qcheck = 0;
     qcchecks.forEach(check => {
-
 
         if (check.question != undefined && check.question != null){
             qcheck += 1;
@@ -144,18 +144,49 @@ function mapQCdata(qcno) {
 // Code to save JSON as file
 function saveFile(obj) {
     let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-    let fileName = '"download="qcdata-' + obj["itemserial"];
     
-    document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + fileName + '.json" role="button">download</a>';
+    // Check if all are passing (APPEND PASS)
+    // One FAIL, or incomplete
+    let fileName = obj["itemserial"];
+
+    const qc1 = JSON.parse(obj["qc1"]);
+    const qc2 = JSON.parse(obj["qc2"]);
+    let passing = false;
+
+
+    for (key in qc1) {
+        if (qc1[key] == "FAIL" || qc2[key] == "FAIL") {
+            passing = false;
+            fileName += '-FAIL';
+            console.log("Failure detected!");
+            break;
+        } else if (qc1[key] != "" && qc2[key] != ""){
+            passing = true;
+        }
+    }
+
+    if (passing) {
+        fileName += '-PASS';
+        console.log("All QC Checks Passed!");
+    }
+
+    console.log("Filename: " + fileName);
+
+    document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + '"download="' + fileName + '.json" role="button">download</a>';
 }
+
 
 // Code to upload JSON file to autofill form
 function handleFileSelect(event) {
     event.preventDefault();
     const selectedFile = event.target[0].files[0];
     if (selectedFile) {
+        const fname = (selectedFile.name).split(/[^A-Za-z_-]/);
+        console.log(fname);
+        document.title = fname[0];
         reader.addEventListener("load", handleFileLoad);
         reader.readAsText(selectedFile);
+        return fname;
     }
 }
 
@@ -226,7 +257,7 @@ function formAutofill(data) {
             buttons[2].checked = true;
         }
         if (q1checks[key] == "") {
-            q1checks.forEach((b) => b.checked = false);
+            buttons.forEach((b) => b.checked = false);
         }
         
     }
@@ -251,8 +282,7 @@ function formAutofill(data) {
             buttons[2].checked = true;
         }
         if (q1checks[key] == "") {
-            q1checks.forEach((b) => b.checked = false);
+            buttons.forEach((b) => b.checked = false);
         }
     }
 }
-
