@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
-   <img width=600px height=200px src="https://rcto.wpengine.com/wp-content/uploads/2022/03/logo.png" alt="RCT logo"></a>
+   <img width=600px height=200px src="resource/logo.png" alt="RCT logo"></a>
 </p>
 
 <h3 align="center">RCT Form Builder</h3>

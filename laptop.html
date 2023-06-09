@@ -17,54 +17,60 @@
         <!-- repeatable template for Header group rows -->
         <template id="heading-template">
             <div class="form-text" id="groupHeadingTemplate">
-                <h3 id="infoHeadingTemplate"><span class="heading"></span></h3>
+                <h4 id="infoHeadingTemplate"><span class="heading"></span></h4>
             </div>
         </template>
 
         <!-- repeatable template for QC Button rows -->
         <template id="qc-template">
-            <div class="form-group row">
-                <label for="inputTemplate" class="col-sm-4 col-form-label"><span class="question"></span></label>
-                <div class="col-sm-8">    
-                        <div class="btn-group btn-group-toggle qc1-toggle" id="qc1-toggle" data-toggle="buttons" aria-label="QC1 group">
-                            <label class="btn btn-pass">
-                                <input type="radio" name="qc1" id="qc1-pass" autocomplete="off">PASS
-                            </label>
-                            <label class="btn btn-fail">
-                                <input type="radio" name="qc1" id="qc1-fail" autocomplete="off">FAIL
-                            </label>
-                            <label class="btn btn-na">
-                                <input type="radio" name="qc1" id="qc1-na" autocomplete="off">N/A
-                            </label>
-                        </div>
-                        <span class="col-sm-1"></span>
-                        <div class="btn-group btn-group-toggle qc2-toggle" id="qc2-toggle" data-toggle="buttons" aria-label="QC2 group">
-                            <label class="btn btn-pass">
-                                <input type="radio" name="qc2" id="qc2-pass" autocomplete="off">PASS
-                            </label>
-                            <label class="btn btn-fail">
-                                <input type="radio" name="qc2" id="qc2-fail" autocomplete="off">FAIL
-                            </label>
-                            <label class="btn btn-na">
-                                <input type="radio" name="qc2" id="qc2-na" autocomplete="off">N/A
-                            </label>
-                        </div>
-                    </div>
-                </div>
+            <label id="inputTemplate" class="col-sm-3 col-form-label"><span class="question"></span></label>
+            <div class="btn-group btn-group-toggle qc1-toggle" id="qc1-toggle" data-toggle="buttons" aria-label="QC1 group">
+                <label class="btn btn-pass">
+                    <input type="radio" name="qc1" id="qc1-pass" autocomplete="off">PASS
+                </label>
+                <label class="btn btn-fail">
+                    <input type="radio" name="qc1" id="qc1-fail" autocomplete="off">FAIL
+                </label>
+                <label class="btn btn-na">
+                    <input type="radio" name="qc1" id="qc1-na" autocomplete="off">N/A
+                </label>
+            </div>
+            <span class="col-sm-1"></span>
+            <div class="btn-group btn-group-toggle qc2-toggle" id="qc2-toggle" data-toggle="buttons" aria-label="QC2 group">
+                <label class="btn btn-pass">
+                    <input type="radio" name="qc2" id="qc2-pass" autocomplete="off">PASS
+                </label>
+                <label class="btn btn-fail">
+                    <input type="radio" name="qc2" id="qc2-fail" autocomplete="off">FAIL
+                </label>
+                <label class="btn btn-na">
+                    <input type="radio" name="qc2" id="qc2-na" autocomplete="off">N/A
+                </label>
             </div>
         </template>
 
 
         <form id="laptop-qc-form" class="qc-form" method="post">
-            <h1>Quality Control Form - Laptop/Tablet</h1>
-            <b>
-                <p>
-                    This form is to be completed prior to equipment delivery <br>
-                    1 copy is to be sent with the shipment and 1 copy is to be saved by production for future refrence.
-                </p><br>
-            </b>
+            
+            <div class="form-group row">
+                <h1 class="col-sm-9">Quality Control Form - Laptop/Tablet</h1>
+                
+                <img class="col" alt="Renewed Computer Technology Logo" src="resource/logo.png">
+            </div>
 
             <div class="form-group row">
+                        <b><p class="col">
+                            This form is to be completed prior to equipment delivery <br>
+                            1 copy is to be sent with the shipment and 1 copy is to be saved by production for future reference.
+                        </p></b>
+
+                        <label for="inputAssemblyDate" class="col-sm-1 col-form-label">Date:</label>
+                        <div class="col-sm-2">
+                            <input type="date" class="form-control" id="inputAssemblyDate" name="assemblydate">
+                        </div>
+            </div>
+
+            <div class="form-group row d-none"> 
                 <label for="inputBuildType" class="col-sm-2 col-form-label">QC Sheet For:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control" id="inputType" name="buildtype" value="Laptop" readonly>
@@ -72,63 +78,51 @@
             </div>
 
             <div class="form-group row">
-                <label for="inputLocation" class="col-sm-2 col-form-label">Build Location</label>
-                <div class="col-sm-4">
+
+                <label for="inputLocation" class="col-sm-2 col-form-label">RCT Location</label>
+                <div class="col-sm-2">
                     <select class="custom-select" id="inputLocation" name="buildlocation">
                         <option selected>Choose...</option>
-                        <option value="1">Niagara</option>
-                        <option value="2">Mississauga</option>
-                        <option value="3">Toronto</option>
+                        <option value="1">NIA</option>
+                        <option value="2">MIS</option>
+                        <option value="3">GTA</option>
                     </select>
                 </div>
-            </div>
-    
-            <div class="form-group row">
-                <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 &#8212; Assembly Technician Initial</label>
-                <div class="col-sm-4">
+
+                <label for="inputQC1Name" class="col-sm-2 col-form-label">QC1 Initial</label>
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputQC1Name" name="qc1initial" placeholder="Assembly Tech">
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 &#8212; QC Technician Initial</label>
-                <div class="col-sm-4">
+                
+                <label for="inputQC2Name" class="col-sm-2 col-form-label">QC2 Initial</label>
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputQC2Name" name="qc2initial" placeholder="SR Tech/Supervisor">
                 </div>
             </div>
-            <br>
             <div class="form-group row">
-                <label for="inputAssemblyDate" class="col-sm-2 col-form-label">Date: DD/MM/YYYY</label>
-                <div class="col-sm-4">
-                    <input type="date" class="form-control" id="inputAssemblyDate" name="assemblydate">
+                <label for="inputSageOrder" class="col-sm-2 col-form-label">Order No.</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" id="inputSageOrder" name="salesorder">
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputSalesOrder" class="col-sm-2 col-form-label">Sales Order No.</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="inputSalesOrder" name="salesorder">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">RCT Package Serial No.</label>
-                <div class="col-sm-4">
+
+                <label for="inputRCTPackageSerial" class="col-sm-2 col-form-label">Package No.</label>
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputRCTPackageSerial" name="rctpackage">
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">RCT Item Serial No.</label>
-                <div class="col-sm-4">
+
+                <label for="inputRCTPItemSerial" class="col-sm-2 col-form-label">Unit No.</label>
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputRCTItemSerial" name="itemserial">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputMakeModel" class="col-sm-2 col-form-label">Make/Model:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <input type="text" class="form-control" id="inputMakeModel" name="makemodel">
                 </div>
-            </div>
-            <div class="form-group row">
+
                 <label for="inputOS" class="col-sm-2 col-form-label">Operating System</label>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <select class="custom-select" id="inputOSSelect" autocomplete="false" name="operatingsystem">
                         <option selected>Choose...</option> 
                         <option value="1">Windows</option>
@@ -136,10 +130,8 @@
                         <option value="3">Chrome OS</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputMSO" class="col-sm-2 col-form-label">Microsoft Office Installed</label>
-                <div class="col-sm-4">
+                <label for="inputMSO" class="col-sm-2 col-form-label">MS Office</label>
+                <div class="col-sm-2">
                     <select class="custom-select" id="inputMSOSelect" name="msoinstalled">
                         <option selected>Choose...</option>
                         <option value="1">YES</option>
@@ -148,19 +140,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputProcessorType" class="col-sm-2 col-form-label">Processor Type/Speed:</label>
-                <div class="col-sm-2">
+                <label for="inputProcessorType" class="col col-form-label">Processor Type  </label>
+                <div class="col">
                     <select class="custom-select" id="inputProcessorType" name="processortype">
                         <option selected>Choose...</option>
-                        <option value="1">intel Core i3</option>
-                        <option value="2">intel Core i5</option>
-                        <option value="3">intel Core i7</option>
-                        <option value="4">intel Core i9</option>
+                        <option value="1">Core i3</option>
+                        <option value="2">Core i5</option>
+                        <option value="3">Core i7</option>
+                        <option value="4">Core i9</option>
                     </select>
                 </div>
-                <label for="inputProcessorSpeed" class="col-sm-0 col-form-label">GEN</label>
-                <div class="col-sm-2">
-                    <select class="custom-select" id="inputProcessorType" name="processorgen">
+                <label for="inputProcessorGen" class="col col-form-label">GEN</label>
+                <div class="col">
+                    <select class="custom-select" id="inputProcessorGen" name="processorgen">
                         <option selected>Choose...</option>
                         <option value="1">1st Gen</option>
                         <option value="2">2nd Gen</option>
@@ -177,10 +169,9 @@
                         <option value="13">13th Gen</option>
                     </select>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputDriveType" class="col-sm-2 col-form-label">HDD/SSD Type</label>
-                <div class="col-sm-2">
+
+                <label for="inputDriveType" class="col col-form-label">HDD/SSD Type</label>
+                <div class="col">
                     <select class="custom-select" id="inputDriveType" name="drivetype">
                         <option selected>Choose...</option>
                         <option value="1">Hard Drive</option>
@@ -189,8 +180,8 @@
                         <option value="4">NVMe</option>
                     </select>
                 </div>
-                <label for="inputRAMType" class="col-sm-0 col-form-label">RAM</label>
-                <div class="col-sm-1">
+                <label for="inputRAMType" class="col col-form-label">RAM</label>
+                <div class="col">
                     <select class="custom-select" id="inputRAMType" name="ramtype">
                         <option selected>Choose...</option>
                         <option value="1">DDR3</option>
@@ -198,7 +189,7 @@
                         <option value="3">DDR5</option>
                     </select>
                 </div>
-                <div class="col-sm-1">
+                <div class="col">
                     <select class="custom-select" id="inputRAMSize" name="ramsize">
                         <option selected>Choose...</option>
                         <option value="1">8 GB</option>
@@ -209,14 +200,7 @@
             
             <!--Rows for QC information is imported here-->
             <div id="qcchecks">
-                <div class="form-group row">
-                    <span class="col-sm-4"></span>
-                    <span class="col-sm-6 form-group-row">
-                        <label class="col-sm-4 col-form-label center"><h4>QC1</h4></label>
-                        <span class="col-sm-2"></span>
-                        <label class="col-sm-4 col-form-label center"><h4>QC2</h4></label>
-                    </span>
-                </div>
+
             </div>
 
             <div class="form-group d-print-none">

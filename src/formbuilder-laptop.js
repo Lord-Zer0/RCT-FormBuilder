@@ -61,9 +61,14 @@ qcchecks.forEach(check => {
 
     if (check.isHeader == true) {
         const instance = document.importNode(headerblock.content, true);
-        instance.querySelector('.heading').innerHTML = check.heading;
 
         // Append the instance at the DOM
+        if (check.heading == "Visual Inspection"){
+            instance.querySelector('.heading').innerHTML = '<div class="row"><p class="col">' + check.heading + '</p><span class="col text-center">QC1</span><span class="col text-center">QC2</span><span class="col"></span><span class="col text-center">QC1</span><span class="col text-center">QC2</span></div>';
+        } else {
+            instance.querySelector('.heading').innerHTML = check.heading;
+        }
+        
         document.getElementById('qcchecks').appendChild(instance);
     } else {
         // Create an instance of the template content
@@ -97,20 +102,24 @@ function handleFormSubmit(event) {
 
     const data = new FormData(event.target);
 
-    for (let i = 1; i < 30; i++) {
+    for (let i = 1; i < qcchecks.length; i++) {
         data.delete("q" + i + "_qc1");
         data.delete("q" + i + "_qc2");
     }
 
     const formJSON = Object.fromEntries(data.entries());
-    formJSON.buildtype = "Laptop"
+    formJSON.buildtype = "Laptop";
 
     formJSON.qc1 = mapQCdata("qc1");
     formJSON.qc2 = mapQCdata("qc2");
 
     console.log(JSON.stringify(formJSON, null, 2));
 
-    saveFile(formJSON);
+    try {
+        saveFile(formJSON);
+    } catch (err) {
+        alert(err.message);
+    }
 }
 
 function mapQCdata(qcno) {
@@ -145,9 +154,39 @@ function mapQCdata(qcno) {
 // Code to save JSON as file
 function saveFile(obj) {
     let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-    let fileName = '"download="qcdata-' + obj["itemserial"];
-    
-    document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + fileName + '.json" role="button">download</a>';
+
+    // Check if all are passing (APPEND PASS)
+    // One FAIL, or incomplete
+    let fileName = obj["itemserial"];
+
+    const qc1 = JSON.parse(obj["qc1"]);
+    const qc2 = JSON.parse(obj["qc2"]);
+    let passing = false;
+
+
+    for (key in qc1) {
+        if (qc1[key] == "FAIL" || qc2[key] == "FAIL") {
+            passing = false;
+            fileName += '-FAIL';
+            console.log("Failure detected!");
+            break;
+        } else if (qc1[key] != "" && qc2[key] != ""){
+            passing = true;
+        }
+    }
+
+    if (passing) {
+        fileName += '-PASS';
+        console.log("All QC Checks Passed!");
+    }
+
+    if (fileName == "") {
+        throw new ValidationError("File must contain a unit number i.e. SHID-0012345");
+    }
+
+    console.log("Filename: " + fileName);
+
+    document.querySelector("#downloadLink").innerHTML = '<a class="btn btn-outline-primary" href="data:' + data + '"download="' + fileName + '.json" role="button">download</a>';
 }
 
 // Code to upload JSON file to autofill form
@@ -155,6 +194,9 @@ function handleFileSelect(event) {
     event.preventDefault();
     const selectedFile = event.target[0].files[0];
     if (selectedFile) {
+        const fname = (selectedFile.name).split(/[^A-Za-z_-]/);
+        console.log(fname);
+        document.title = fname[0];
         reader.addEventListener("load", handleFileLoad);
         reader.readAsText(selectedFile);
     }
@@ -165,6 +207,7 @@ function handleFileLoad(event) {
     if (event.type === "load") {
 
         const data = JSON.parse(reader.result);
+        console.log(reader.result);
 
         try {
             formAutofill(data);
@@ -186,10 +229,10 @@ function formAutofill(data) {
     }
 
     // Version 1.1 with hard coded element references
+    qcsheet.elements["assemblydate"].value = data["assemblydate"];
     qcsheet.elements["buildlocation"].value = data["buildlocation"];
     qcsheet.elements["qc1initial"].value = data["qc1initial"];
     qcsheet.elements["qc2initial"].value = data["qc2initial"];
-    qcsheet.elements["assemblydate"].value = data["assemblydate"];
     qcsheet.elements["salesorder"].value = data["salesorder"];
     qcsheet.elements["rctpackage"].value = data["rctpackage"];
     qcsheet.elements["itemserial"].value = data["itemserial"];
@@ -226,6 +269,9 @@ function formAutofill(data) {
             buttons[2].click();
             buttons[2].checked = true;
         }
+        if (q1checks[key] == "") {
+            buttons.forEach((b) => b.checked = false);
+        }
         
     }
     qcheck = 0;
@@ -247,6 +293,9 @@ function formAutofill(data) {
         if (q2checks[key] == "N/A") {
             buttons[2].click();
             buttons[2].checked = true;
+        }
+        if (q1checks[key] == "") {
+            buttons.forEach((b) => b.checked = false);
         }
     }
 }
