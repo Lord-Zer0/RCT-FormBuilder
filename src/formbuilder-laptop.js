@@ -135,13 +135,13 @@ function mapQCdata(qcno) {
             let buttons = document.getElementsByName(qname);
 
             if (buttons[0].checked) {
-                selectedv = "PASS"
+                selectedv = "PASS";
             }
             if (buttons[1].checked) {
-                selectedv = "FAIL"
+                selectedv = "FAIL";
             }
             if (buttons[2].checked) {
-                selectedv = "N/A"
+                selectedv = "N/A";
             }
 
             qmap[check.question] = selectedv;
@@ -194,9 +194,9 @@ function handleFileSelect(event) {
     event.preventDefault();
     const selectedFile = event.target[0].files[0];
     if (selectedFile) {
-        const fname = (selectedFile.name).split(/[^A-Za-z_-]/);
-        console.log(fname);
-        document.title = fname[0];
+        const fname = (selectedFile.name).split(/([^-]+-[^.-]+).*/);
+        console.log("File loaded for unit: " + fname[1]);
+        document.title = fname[1];
         reader.addEventListener("load", handleFileLoad);
         reader.readAsText(selectedFile);
     }
