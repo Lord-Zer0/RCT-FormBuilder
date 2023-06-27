@@ -158,7 +158,6 @@ function saveFile(obj) {
     let passing = false;
     let complete = false;
 
-
     for (key in qc1) {
         if (qc1[key] == "FAIL" || qc2[key] == "FAIL") {
             passing = false;
@@ -166,9 +165,11 @@ function saveFile(obj) {
             fileName += '-FAIL';
             console.log("Failure detected!");
             break;
-        } else if (qc1[key] != ""){
-            complete = false;
+        } else if (qc1[key] == "PASS" || qc1[key] == "N/A") {
             passing = true;
+        } else if (qc1[key] == ""){
+            complete = false;
+            passing = false;
         }
         if (qc2[key] == "PASS" || qc2[key] == "N/A") {
             complete = true;
