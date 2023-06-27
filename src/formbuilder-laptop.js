@@ -167,17 +167,27 @@ function saveFile(obj) {
     for (key in qc1) {
         if (qc1[key] == "FAIL" || qc2[key] == "FAIL") {
             passing = false;
+            complete = false;
             fileName += '-FAIL';
             console.log("Failure detected!");
             break;
-        } else if (qc1[key] != "" && qc2[key] != ""){
+        } else if (qc1[key] != ""){
+            complete = false;
             passing = true;
+        }
+        if (qc2[key] == "PASS" || qc2[key] == "N/A") {
+            complete = true;
         }
     }
 
-    if (passing) {
-        fileName += '-PASS';
+    if (passing && !complete) {
+        fileName += '-QC1PASS';
         console.log("All QC Checks Passed!");
+    }
+
+    if (complete) {
+        fileName += '-QC2COMPLETE';
+        console.log("QC Sheet has been completed, ready to print.")
     }
 
     if (fileName == "") {
