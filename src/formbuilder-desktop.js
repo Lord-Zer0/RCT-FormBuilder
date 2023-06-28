@@ -58,7 +58,7 @@ qcchecks.forEach(check => {
 
         // Append the instance at the DOM
         if (check.heading == "Visual Inspection"){
-            instance.querySelector('.heading').innerHTML = '<div class="row"><p class="col">' + check.heading + '</p><span class="col text-center">QC1</span><span class="col text-center">QC2</span><span class="col"></span><span class="col text-center">QC1</span><span class="col text-center">QC2</span></div>';
+            instance.querySelector('.heading').innerHTML = '<div class="row"><p class="col-sm-3">' + check.heading + '</p><span class="qc-text">QC1</span><span class="qc-space"></span><span class="qc-text">QC2</span><span class="col-sm-3"></span><span class="qc-text">QC1</span><span class="qc-space"></span><span class="qc-text">QC2</span></div>';
         } else {
             instance.querySelector('.heading').innerHTML = check.heading;
         }

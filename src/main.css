@@ -3,6 +3,15 @@ body {
     margin: 0;
 }
 
+.qc-text {
+    text-align: center;
+    width: 177.05px;
+}
+
+.qc-space {
+    width: 30px;
+}
+
 .btn.btn-pass.active {
     background-color: green !important;
 }
@@ -42,6 +51,14 @@ body {
 
     .btn:not(.active) {
         display: none;
+    }
+
+    .qc-text {
+        width: auto;
+    }
+
+    .qc-space {
+        width: 20mm;
     }
     
 }
