@@ -1,4 +1,5 @@
 // Import templates
+const HOST_NAME = "http://192.168.1.117:8000"
 const qcblock = document.querySelector('#qc-template');
 const headerblock = document.querySelector('#heading-template')
 const qcchecks = [
@@ -64,7 +65,7 @@ qcchecks.forEach(check => {
 
         // Append the instance at the DOM
         if (check.heading == "Visual Inspection"){
-            instance.querySelector('.heading').innerHTML = '<div class="row"><p class="col">' + check.heading + '</p><span class="col text-center">QC1</span><span class="col text-center">QC2</span><span class="col"></span><span class="col text-center">QC1</span><span class="col text-center">QC2</span></div>';
+            instance.querySelector('.heading').innerHTML = '<div class="row"><p class="col-sm-3">' + check.heading + '</p><span class="qc-text">QC1</span><span class="qc-space"></span><span class="qc-text">QC2</span><span class="col-sm-3"></span><span class="qc-text">QC1</span><span class="qc-space"></span><span class="qc-text">QC2</span></div>';
         } else {
             instance.querySelector('.heading').innerHTML = check.heading;
         }
@@ -117,6 +118,7 @@ function handleFormSubmit(event) {
 
     try {
         saveFile(formJSON);
+        post(formJSON);
     } catch (err) {
         alert(err.message);
     }
@@ -310,4 +312,22 @@ function formAutofill(data) {
             buttons.forEach((b) => b.checked = false);
         }
     }
+}
+
+function format_output(data) {
+    let request_body = Object.fromEntries(data);
+    
+}
+
+function post(request_body) {
+    fetch(HOST_NAME + "/api/", {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(request_body),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
 }
