@@ -118,7 +118,7 @@ function handleFormSubmit(event) {
 
     try {
         saveFile(formJSON);
-        post(formJSON);
+        //post(formJSON);
     } catch (err) {
         alert(err.message);
     }
