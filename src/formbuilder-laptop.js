@@ -1,7 +1,6 @@
 // Import templates
 
 
-const HOST_NAME = "http://192.168.1.117:8000"
 const qcblock = document.querySelector('#qc-template');
 const headerblock = document.querySelector('#heading-template')
 const qcchecks = [
@@ -336,16 +335,16 @@ function post(request_body) {
         .catch((err) => console.log(err));
 }
 
-function get_db() {
-    fetch(HOST_NAME + "/api/", {
-        method: "GET"
-    })
-        .then((response) => { 
-            return response.json();
-        })
-        .then((json) => console.log(json))
-        .catch((err) => console.log(err));
-}
+// function get_db() {
+//     fetch(HOST_NAME + "/api/", {
+//         method: "GET"
+//     })
+//         .then((response) => { 
+//             return response.json();
+//         })
+//         .then((json) => console.log(json))
+//         .catch((err) => console.log(err));
+// }
 
 function get_unit(unit_id) {
     fetch(HOST_NAME + "/api/" + unit_id, {

@@ -1,7 +1,6 @@
-const HOST_NAME = "http://192.168.1.117:8000"
 
 function post(request_body) {
-    fetch(HOST_NAME + "/api/", {
+    fetch("/api/", {
         method: "POST",
         body: JSON.stringify(request_body),
         headers: {
@@ -19,37 +18,35 @@ function post(request_body) {
 }
 
 function get_db() {
-    fetch(HOST_NAME + "/api/search", {
+    fetch("/api/search", {
         method: "POST",
         mode: "no-cors",
-        headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-        }
-    })
-        .then((response) => { 
-            console.log(response)
-            return response;
+        body: new URLSearchParams({
+          'limit': '2',
+          'ascending': 'false',
+          'order_table': 'assemblydate'
         })
-        .then((json) => console.log(json))
-        .catch((err) => {
-            console.log(err);
-            return err;
-        });
+    })
+    .then(response => response.json())
+    .then(text => console.log(text))
+    .catch(error => console.error(error));
 }
 
-function search(limit, query, sortby, ascending) {
-    fetch(HOST_NAME + "/api/search", {
+async function search(limit, query, sortby, ascending) {
+    try{
+    const response = await fetch("/api/search", {
         method: "POST",
-        body: {
+        mode: "no-cors",
+        body: new URLSearchParams({
             "limit": (limit != null) ? limit : "",
             "search": (query != null) ? query : "",
             "order_table": (sortby != null) ? sortby : "",
             "ascending": (ascending != null) ? ascending : "",
-        },
+        }),
     })
-        .then((json) => console.log(json))
-        .catch((err) => {
-            console.log(err);
-            return err;
-        });
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
 }
