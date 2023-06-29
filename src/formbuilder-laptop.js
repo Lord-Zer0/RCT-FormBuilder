@@ -1,4 +1,6 @@
 // Import templates
+
+
 const HOST_NAME = "http://192.168.1.117:8000"
 const qcblock = document.querySelector('#qc-template');
 const headerblock = document.querySelector('#heading-template')
@@ -118,7 +120,7 @@ function handleFormSubmit(event) {
 
     try {
         saveFile(formJSON);
-        //post(formJSON);
+        post(formJSON);
     } catch (err) {
         alert(err.message);
     }
@@ -322,12 +324,44 @@ function format_output(data) {
 function post(request_body) {
     fetch(HOST_NAME + "/api/", {
         method: "POST",
-        mode: "no-cors",
         body: JSON.stringify(request_body),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => console.log(json))
+        .catch((err) => console.log(err));
+}
+
+function get_db() {
+    fetch(HOST_NAME + "/api/", {
+        method: "GET"
+    })
+        .then((response) => { 
+            return response.json();
+        })
+        .then((json) => console.log(json))
+        .catch((err) => console.log(err));
+}
+
+function get_unit(unit_id) {
+    fetch(HOST_NAME + "/api/" + unit_id, {
+        method: "GET"
+    })
+        .then((response) => { 
+            return response.json();
+        })
+        .then((json) => console.log(json))
+        .catch((err) => console.log(err));
+}
+
+function network_load(filename) {
+    try {
+        formAutofill(get_unit(filename));
+    } catch (err) {
+        console.log(err.message);
+    }
 }
